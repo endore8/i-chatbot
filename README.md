@@ -6,11 +6,12 @@
 
 Chatbot component for React.
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+[build-badge]: https://img.shields.io/travis/Endore8/i-chatbot.svg?branch=master
+[build]: https://travis-ci.org/Endore8/i-chatbot
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+[npm-badge]: https://badge.fury.io/js/i-chatbot.svg
+[npm]: https://www.npmjs.org/package/i-chatbot
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+[coveralls-badge]: https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg
+[coveralls]: https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg
+
