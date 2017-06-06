@@ -1,1 +1,3 @@
-export {default as ChatBot} from './ChatBot'
+import ChatBot from './ChatBot'
+
+export default ChatBot
