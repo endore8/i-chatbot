@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import ActionBar from './actionbar/ActionBar'
 import Messages from './messages/Messages'
 
 class ChatBot extends Component {
 
-  addTextMessage(text) {
+  addTextMessage (text) {
   }
 
-  addTextMessageWithReplies(text, replies) {
+  addTextMessageWithReplies (text, replies) {
   }
 
   render () {
     return (
       <div className='ChatBot'>
         <Messages messages={[]} />
+        <ActionBar />
       </div>
     )
   }

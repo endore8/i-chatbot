@@ -7,7 +7,7 @@ class Message extends Component {
       <li className={'Message ' + this.props.isInbound ? 'Message-Inbound' : 'Message-Outbound'}>
         <span>{this.props.message.text}</span>
       </li>
-    );
+    )
   }
 }
 
