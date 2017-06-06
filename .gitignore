@@ -7,10 +7,9 @@ node_modules
 coverage
 
 # production
-build
-dist
 lib
 es
+umd
 
 # IDE
 .idea
