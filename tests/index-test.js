@@ -4,8 +4,10 @@ import { render, unmountComponentAtNode } from 'react-dom'
 
 import ChatBot from 'src/'
 
-describe('Component', () => {
+describe('ChatBot', () => {
   let node
+
+  const onQuickReplyAction = () => {}
 
   beforeEach(() => {
     node = document.createElement('div')
@@ -15,8 +17,9 @@ describe('Component', () => {
     unmountComponentAtNode(node)
   })
 
-  it('DOM hierarchy', () => {
-    render(<ChatBot />, node, () => {
+  it('Renders view', () => {
+    render(<ChatBot startButton={ChatBot.makeReplyButton('Start', 'START')}
+                    onQuickReplyAction={onQuickReplyAction} />, node, () => {
       expect(node.children.length).toEqual(1)
       expect(node.firstChild.className).toEqual('ChatBot')
     })
