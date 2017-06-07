@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import ActionBar from './actionbar/ActionBar'
 import Messages from './messages/Messages'
 
+import MessageProcessor from './MessageProcessor'
+
 import './ChatBot.css'
 
 class ChatBot extends Component {
@@ -17,6 +19,9 @@ class ChatBot extends Component {
     }
 
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
+    this._onProcessed = this._onProcessed(this)
+
+    this._messageProcessor = new MessageProcessor(this._onProcessed)
   }
 
   _onQuickReplyAction (text, action) {
@@ -43,6 +48,9 @@ class ChatBot extends Component {
     })
   }
 
+  _onProcessed (message) {
+  }
+
   render () {
     let actions
     let actionBarType
@@ -55,7 +63,7 @@ class ChatBot extends Component {
 
     return (
       <div className='ChatBot'>
-        <Messages messages={this.state.messages} />
+        <Messages messages={this.state.messages} isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
         <ActionBar actions={actions} type={actionBarType} />
       </div>
     )
@@ -78,9 +86,14 @@ class ChatBot extends Component {
   }
 }
 
+ChatBot.defaultProps = {
+  isTypingEnabled: true
+}
+
 ChatBot.propTypes = {
   onQuickReplyAction: PropTypes.func.isRequired,
-  startButton: PropTypes.object.isRequired
+  startButton: PropTypes.object.isRequired,
+  isTypingEnabled: PropTypes.bool
 }
 
 export default ChatBot
