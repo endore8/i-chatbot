@@ -1,12 +1,13 @@
 .Typing {
-  background-color: rgba(239, 239, 239, 0.4);
-  color: rgba(0, 0, 0, 0.75);
+  background-color: fade(#efefef, 40%);
+  color: fade(#000, 75%);
   display: table;
   text-align: left;
   width: auto;
   margin: 0.25em 0;
   padding: 1.5em 1em;
 }
+
 .Typing span {
   height: 0.5em;
   width: 0.5em;
@@ -17,23 +18,28 @@
   border-radius: 50%;
   opacity: 0.4;
 }
+
 .Typing span:nth-of-type(1) {
   -webkit-animation: 1s blink infinite 0.3333s;
   animation: 1s blink infinite 0.3333s;
 }
+
 .Typing span:nth-of-type(2) {
   -webkit-animation: 1s blink infinite 0.6666s;
   animation: 1s blink infinite 0.6666s;
 }
+
 .Typing span:nth-of-type(3) {
   -webkit-animation: 1s blink infinite 0.9999s;
   animation: 1s blink infinite 0.9999s;
 }
+
 @-webkit-keyframes blink {
   50% {
     opacity: 1;
   }
 }
+
 @keyframes blink {
   50% {
     opacity: 1;
