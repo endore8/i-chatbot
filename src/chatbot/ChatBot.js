@@ -19,36 +19,32 @@ class ChatBot extends Component {
     }
 
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
-    this._onProcessed = this._onProcessed(this)
+    this._onProcessed = this._onProcessed.bind(this)
 
     this._messageProcessor = new MessageProcessor(this._onProcessed)
   }
 
   _onQuickReplyAction (text, action) {
-    let reply = this.props.onQuickReplyAction(action)
-    if (reply) {
-      reply = (reply instanceof Array) ? reply : [reply]
-    }
+    this.setState((prevState, props) => ({
+      messages: prevState.messages.concat({
+        text: text,
+        isInbound: true
+      }),
+      actions: null
+    }))
 
-    let messages = [{
-      text: text,
-      isInbound: true
-    }]
+    let next = this.props.onQuickReplyAction(action)
 
-    let actions
+    if (!next) return
 
-    if (reply) {
-      messages = messages.concat(reply.map((m, i) => Object.assign({}, m.message, {isInbound: false})))
-      actions = reply.pop().actions
-    }
-
-    this.setState({
-      messages: this.state.messages.concat(messages),
-      actions: actions
-    })
+    ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
   }
 
   _onProcessed (message) {
+    this.setState((prevState, props) => ({
+      messages: prevState.messages.concat(Object.assign({}, message.message, {isInbound: false})),
+      actions: this._messageProcessor.isProcessing ? null : message.actions
+    }))
   }
 
   render () {
@@ -63,7 +59,8 @@ class ChatBot extends Component {
 
     return (
       <div className='ChatBot'>
-        <Messages messages={this.state.messages} isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
+        <Messages messages={this.state.messages}
+                  isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
         <ActionBar actions={actions} type={actionBarType} />
       </div>
     )
