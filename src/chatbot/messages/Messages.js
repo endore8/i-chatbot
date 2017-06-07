@@ -8,9 +8,7 @@ class Messages extends Component {
   render () {
     return (
       <ul className='Messages'>
-        {this.props.messages.map((message, i) => {
-          return <Message message={message} key={i} />
-        })}
+        {this.props.messages.map((message, i) => <Message {...message} key={i} />)}
         {this.props.isTyping && <Typing />}
       </ul>
     )
@@ -23,7 +21,7 @@ Messages.defaultProps = {
 }
 
 Messages.propTypes = {
-  messages: PropTypes.arrayOf(Message.model).isRequired,
+  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   isTyping: PropTypes.bool
 }
 

@@ -5,18 +5,15 @@ class Message extends Component {
   render () {
     return (
       <li className={'Message ' + this.props.isInbound ? 'Message-Inbound' : 'Message-Outbound'}>
-        <span>{this.props.message.text}</span>
+        <span>{this.props.text}</span>
       </li>
     )
   }
 }
 
-const Model = {
+Message.propTypes = {
   text: PropTypes.string.isRequired,
   isInbound: PropTypes.bool.isRequired
 }
-
-Message.model = Model
-Message.propTypes = Model
 
 export default Message
