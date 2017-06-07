@@ -25,13 +25,7 @@ class ChatBot extends Component {
   }
 
   _onQuickReplyAction (text, action) {
-    this.setState((prevState, props) => ({
-      messages: prevState.messages.concat({
-        text: text,
-        isInbound: true
-      }),
-      actions: null
-    }))
+    this._addMessage({text: text}, true, null)
 
     let next = this.props.onQuickReplyAction(action)
 
@@ -41,9 +35,13 @@ class ChatBot extends Component {
   }
 
   _onProcessed (message) {
+    this._addMessage(message.message, false, this._messageProcessor.isProcessing ? null : message.actions)
+  }
+
+  _addMessage (message, isInbound, actions) {
     this.setState((prevState, props) => ({
-      messages: prevState.messages.concat(Object.assign({}, message.message, {isInbound: false})),
-      actions: this._messageProcessor.isProcessing ? null : message.actions
+      messages: prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})),
+      actions: actions
     }))
   }
 
