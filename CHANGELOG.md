@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.0
+
+- Fixed npm package
+
 ## v0.1.0
 
 - ChatBot conversation flow management
