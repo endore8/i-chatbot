@@ -111,5 +111,5 @@ Parameters:
 
 Your contribution is welcomed, no matter how big or small! 
 
-Please have a look at the [contribution guide](i-chatbot/CONTRIBUTING.md) for details about project structure, development environment, test suite, code style, etc. 
-All the version updates are mentioned in the [changelog](i-chatbot/CHANGELOG.md).
+Please have a look at the [contribution guide](CONTRIBUTING.md) for details about project structure, development environment, test suite, code style, etc. 
+All the version updates are mentioned in the [changelog](CHANGELOG.md).
