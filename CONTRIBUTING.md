@@ -20,6 +20,6 @@
 
 ## Building
 
-- `npm run build` will build the component for publishing to npm and also bundle the demo app.
+- `npm run build -- --copy-files` will build the component for publishing to npm and also bundle the demo app.
 
 - `npm run clean` will delete built resources.

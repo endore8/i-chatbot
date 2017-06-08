@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.1
+
+- Added missing styles
+
 ## v0.2.0
 
 - Fixed npm package
