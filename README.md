@@ -113,3 +113,7 @@ Your contribution is welcomed, no matter how big or small!
 
 Please have a look at the [contribution guide](CONTRIBUTING.md) for details about project structure, development environment, test suite, code style, etc. 
 All the version updates are mentioned in the [changelog](CHANGELOG.md).
+
+## License
+
+The library is available as open source under the terms of the [MIT License](LICENSE).
