@@ -21,7 +21,9 @@ class ChatBot extends Component {
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
     this._onProcessed = this._onProcessed.bind(this)
 
-    this._messageProcessor = new MessageProcessor(this._onProcessed)
+    this._messageProcessor = new MessageProcessor()
+    this._messageProcessor.isTypingEnabled = props.isTypingEnabled
+    this._messageProcessor.onProcessed = this._onProcessed
   }
 
   _onQuickReplyAction (text, action) {

@@ -1,7 +1,8 @@
 class MessageProcessor {
 
-  constructor (onProcessed) {
-    this.onProcessed = onProcessed
+  constructor () {
+    this.onProcessed = null
+    this.isTypingEnabled = true
 
     this._timeoutId = null
     this._queue = []
@@ -21,7 +22,7 @@ class MessageProcessor {
   _processNext () {
     if (this.isProcessing || !this._queue.length) return
 
-    this._timeoutId = setTimeout(this._processed, MessageProcessor.typingSpeed(this._queue[0].message.text))
+    this._timeoutId = setTimeout(this._processed, this._typingSpeed(this._queue[0].message.text))
   }
 
   _processed () {
@@ -33,8 +34,8 @@ class MessageProcessor {
     this.onProcessed(message)
   }
 
-  static typingSpeed (text) {
-    if (!text) return 0
+  _typingSpeed (text) {
+    if (!this.isTypingEnabled || !text) return 0
 
     return Math.max(text.length / 10 * 400, 1000) // TODO: optimize range
   }
