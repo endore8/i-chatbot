@@ -3,6 +3,7 @@
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
+[![License: MIT][mit-badge]][mit]
 
 Chatbot component for React.
 
@@ -14,6 +15,9 @@ Chatbot component for React.
 
 [coveralls-badge]: https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg
 [coveralls]: https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg
+
+[mit-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
+[mit]: https://opensource.org/licenses/MIT
 
 ## Getting Started
 
