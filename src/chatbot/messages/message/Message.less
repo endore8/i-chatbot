@@ -1,0 +1,33 @@
+.Message {
+  overflow: hidden;
+  display: flex;
+  margin: 0.25em 0;
+
+  .Message-Content {
+    border-radius: 6px;
+    max-width: 60%;
+    padding: 0.5em 1em;
+  }
+}
+
+.Message-Inbound {
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  .Message-Content {
+    background-color: darkgray;
+    color: white;
+    text-align: right;
+  }
+}
+
+.Message-Outbound {
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .Message-Content {
+    background-color: lightgray;
+    color: black;
+    text-align: left;
+  }
+}

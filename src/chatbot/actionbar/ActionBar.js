@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import ReplyButton from './controls/ReplyButton'
 
+import './ActionBar.css'
+
 class ActionBar extends Component {
 
   render () {

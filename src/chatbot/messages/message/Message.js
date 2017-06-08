@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import './Message.css'
+
 class Message extends Component {
   render () {
     return (
-      <li className={'Message ' + this.props.isInbound ? 'Message-Inbound' : 'Message-Outbound'}>
-        <span>{this.props.text}</span>
+      <li className={this.props.isInbound ? 'Message Message-Inbound' : 'Message Message-Outbound'}>
+        <div className="Message-Content">
+          <span>{this.props.text}</span>
+        </div>
       </li>
     )
   }

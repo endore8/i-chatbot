@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import Message from './message/Message'
 import Typing from './typing/Typing'
 
+import './Messages.css'
+
 class Messages extends Component {
   render () {
     return (
