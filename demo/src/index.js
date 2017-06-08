@@ -13,11 +13,34 @@ class Demo extends Component {
   }
 
   _onQuickReplyAction (postback) {
-    if (postback === 'GET-STARTED') {
-      return [
-        ChatBot.textMessage('Hi!'),
-        ChatBot.textMessage('How is life?', ChatBot.makeReplyButton('Awesome!', 'next'))
-      ]
+    switch (postback) {
+      case 'GET-STARTED':
+        return [
+          ChatBot.textMessage('Hi!'),
+          ChatBot.textMessage('How is life?',
+            ChatBot.makeReplyButton('Great!', 'INTRO'))
+        ]
+
+      case 'INTRO':
+        return [
+          ChatBot.textMessage('That\'s good to hear!'),
+          ChatBot.textMessage('Want to know more about me?',
+            ChatBot.makeReplyButton('Sure!', 'ABOUT'),
+            ChatBot.makeReplyButton('Nope', 'END'))
+        ]
+
+      case 'ABOUT':
+        return [
+          ChatBot.textMessage('I\'m a chatbot! 🤖',
+            ChatBot.makeReplyButton('Hah', 'END'))
+        ]
+
+      case 'END':
+        return [
+          ChatBot.textMessage('Ok, that\'s it for today'),
+          ChatBot.textMessage('Come back later! 😉',
+            ChatBot.makeReplyButton('Bye', 'BYE'))
+        ]
     }
   }
 
