@@ -32,7 +32,7 @@ import ChatBot from 'i-chatbot'
 ```
 
 Create a method that will handle postback events from a chatbot. 
-It should return an array of message objects to reply on user's action.
+It should return an array of message objects to reply on user's action identified by postback.
 
 ```
 onQuickReplyAction (postback) { 
@@ -68,7 +68,7 @@ onQuickReplyAction (postback) {
 }
 ```
 
-Render ChatBot in with a callback method and the start button object.
+Render ChatBot with the callback method and the start button object.
 
 ```
 <ChatBot onQuickReplyAction={this.onQuickReplyAction}
@@ -87,13 +87,13 @@ Render ChatBot in with a callback method and the start button object.
 
 #### textMessage (text, ...actions)
 
-Create text message object.
+Create a text message object.
 
 Parameters:
 
 | Name    | Type      | Description |
 | ------- |:---------:| ------------|
-| text    | string    | Text of the message |
+| text    | string    | Message text |
 | actions | object(s) | Quick reply button(s) object |
 
 #### makeReplyButton (title, postback)
