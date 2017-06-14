@@ -14,7 +14,7 @@ class ChatBot extends Component {
     super(props)
 
     this.state = {
-      actions: [props.startButton],
+      actions: props.startButton ? [props.startButton] : [],
       messages: []
     }
 
@@ -24,6 +24,10 @@ class ChatBot extends Component {
     this._messageProcessor = new MessageProcessor()
     this._messageProcessor.isTypingEnabled = props.isTypingEnabled
     this._messageProcessor.onProcessed = this._onProcessed
+  }
+
+  simulate (text, action) {
+    this._onQuickReplyAction(text, action)
   }
 
   _onQuickReplyAction (text, action) {
@@ -89,7 +93,7 @@ ChatBot.defaultProps = {
 
 ChatBot.propTypes = {
   onQuickReplyAction: PropTypes.func.isRequired,
-  startButton: PropTypes.object.isRequired,
+  startButton: PropTypes.object,
   isTypingEnabled: PropTypes.bool
 }
 

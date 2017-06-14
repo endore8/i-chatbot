@@ -9,7 +9,15 @@ class Demo extends Component {
   constructor (props) {
     super(props)
 
+    this._onClick = this._onClick.bind(this)
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
+  }
+
+  _onClick (e) {
+    e.preventDefault()
+
+    console.log(this)
+    this.chatbot.simulate('Get Started', 'GET-STARTED')
   }
 
   _onQuickReplyAction (postback) {
@@ -50,8 +58,10 @@ class Demo extends Component {
         <Row>
           <Col xs={12} xsOffset={0} sm={10} smOffset={1} md={8} mdOffset={2}>
             <h1>i-chatbot demo</h1>
-            <ChatBot onQuickReplyAction={this._onQuickReplyAction}
+            <ChatBot ref={(cb) => {this.chatbot = cb}}
+                     onQuickReplyAction={this._onQuickReplyAction}
                      startButton={ChatBot.makeReplyButton('Get Started', 'GET-STARTED')} />
+            <button onClick={this._onClick}>Simulate Get Started</button>
           </Col>
         </Row>
       </Grid>

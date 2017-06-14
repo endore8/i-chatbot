@@ -89,6 +89,17 @@ Render ChatBot with the callback method and the start button object.
 
 ### Methods
 
+#### simulate (text, action)
+
+Simulate user action (postback).
+
+Parameters:
+
+| Name    | Type      | Description |
+| ------- |:---------:| ------------|
+| text    | string    | Message text |
+| action  | string    | Postback action event |
+
 #### textMessage (text, ...actions)
 
 Create a text message object.

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.2
+
+- Simulate method
+
 ## v0.2.1
 
 - Added missing styles
