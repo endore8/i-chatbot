@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.4
+
+- Correctly built version of the package
+
 ## v0.2.3
 
 - Minor fix with npm package
