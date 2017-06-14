@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.5
+
+- Build with static files
+
 ## v0.2.4
 
 - Correctly built version of the package
