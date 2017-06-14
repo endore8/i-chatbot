@@ -16,7 +16,6 @@ class Demo extends Component {
   _onClick (e) {
     e.preventDefault()
 
-    console.log(this)
     this.chatbot.simulate('Get Started', 'GET-STARTED')
   }
 

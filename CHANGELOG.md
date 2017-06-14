@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.3
+
+- Minor fix with npm package
+
 ## v0.2.2
 
 - Simulate method
