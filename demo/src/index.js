@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 
 import ChatBot, { ChatBotUtil } from '../../src'
 
+import './index.css'
+
 class Demo extends Component {
 
   constructor (props) {
@@ -53,7 +55,7 @@ class Demo extends Component {
 
   render () {
     return (
-      <Grid>
+      <Grid className="Demo">
         <Row>
           <Col xs={12} xsOffset={0} sm={10} smOffset={1} md={8} mdOffset={2}>
             <h1>i-chatbot demo</h1>
