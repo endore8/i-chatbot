@@ -2,7 +2,7 @@ class ChatBotUtil {
   static textMessage (text, ...actions) {
     return {
       message: {
-        text: (Array.isArray(text)) ? text[1] : text
+        text: text
       },
       actions: actions
     }
@@ -14,6 +14,10 @@ class ChatBotUtil {
       postback: postback
     }
   }
+}
+
+Array.prototype.any = function () {
+  return this[Math.floor((Math.random() * this.length))]
 }
 
 export default ChatBotUtil

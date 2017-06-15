@@ -23,7 +23,7 @@ class Demo extends Component {
     switch (postback) {
       case 'GET-STARTED':
         return [
-          ChatBotUtil.textMessage('Hi!', 'A'),
+          ChatBotUtil.textMessage(['Hi!', 'A'].any()),
           ChatBotUtil.textMessage('How is life?',
             ChatBotUtil.makeReplyButton('Great!', 'INTRO'))
         ]
