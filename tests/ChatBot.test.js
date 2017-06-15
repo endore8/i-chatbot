@@ -2,7 +2,7 @@ import expect from 'expect'
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
-import ChatBot from 'src/'
+import ChatBot, { ChatBotUtil } from 'src/'
 
 describe('ChatBot', () => {
   let node
@@ -18,7 +18,7 @@ describe('ChatBot', () => {
   })
 
   it('Renders view', () => {
-    render(<ChatBot startButton={ChatBot.makeReplyButton('Start', 'START')}
+    render(<ChatBot startButton={ChatBotUtil.makeReplyButton('Start', 'START')}
                     onQuickReplyAction={onQuickReplyAction} />, node, () => {
       expect(node.children.length).toEqual(1)
       expect(node.firstChild.className).toEqual('ChatBot')
