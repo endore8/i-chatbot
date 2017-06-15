@@ -69,22 +69,6 @@ class ChatBot extends Component {
       </div>
     )
   }
-
-  static textMessage (text, ...actions) {
-    return {
-      message: {
-        text: text
-      },
-      actions: actions
-    }
-  }
-
-  static makeReplyButton (text, postback) {
-    return {
-      title: text,
-      postback: postback
-    }
-  }
 }
 
 ChatBot.defaultProps = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { render } from 'react-dom'
 
-import ChatBot from '../../src'
+import ChatBot, { ChatBotUtil } from '../../src'
 
 class Demo extends Component {
 
@@ -23,30 +23,30 @@ class Demo extends Component {
     switch (postback) {
       case 'GET-STARTED':
         return [
-          ChatBot.textMessage('Hi!'),
-          ChatBot.textMessage('How is life?',
-            ChatBot.makeReplyButton('Great!', 'INTRO'))
+          ChatBotUtil.textMessage('Hi!', 'A'),
+          ChatBotUtil.textMessage('How is life?',
+            ChatBotUtil.makeReplyButton('Great!', 'INTRO'))
         ]
 
       case 'INTRO':
         return [
-          ChatBot.textMessage('That\'s good to hear!'),
-          ChatBot.textMessage('Want to know more about me?',
-            ChatBot.makeReplyButton('Sure!', 'ABOUT'),
-            ChatBot.makeReplyButton('Nope', 'END'))
+          ChatBotUtil.textMessage('That\'s good to hear!'),
+          ChatBotUtil.textMessage('Want to know more about me?',
+            ChatBotUtil.makeReplyButton('Sure!', 'ABOUT'),
+            ChatBotUtil.makeReplyButton('Nope', 'END'))
         ]
 
       case 'ABOUT':
         return [
-          ChatBot.textMessage('I\'m a chatbot! 🤖',
-            ChatBot.makeReplyButton('Hah', 'END'))
+          ChatBotUtil.textMessage('I\'m a chatbot! 🤖',
+            ChatBotUtil.makeReplyButton('Hah', 'END'))
         ]
 
       case 'END':
         return [
-          ChatBot.textMessage('Ok, that\'s it for today'),
-          ChatBot.textMessage('Come back later! 😉',
-            ChatBot.makeReplyButton('Bye', 'BYE'))
+          ChatBotUtil.textMessage('Ok, that\'s it for today'),
+          ChatBotUtil.textMessage('Come back later! 😉',
+            ChatBotUtil.makeReplyButton('Bye', 'BYE'))
         ]
     }
   }
@@ -59,7 +59,7 @@ class Demo extends Component {
             <h1>i-chatbot demo</h1>
             <ChatBot ref={(cb) => {this.chatbot = cb}}
                      onQuickReplyAction={this._onQuickReplyAction}
-                     startButton={ChatBot.makeReplyButton('Get Started', 'GET-STARTED')} />
+                     startButton={ChatBotUtil.makeReplyButton('Get Started', 'GET-STARTED')} />
             <button onClick={this._onClick}>Simulate Get Started</button>
           </Col>
         </Row>
