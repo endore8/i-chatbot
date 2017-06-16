@@ -64,7 +64,6 @@ class Demo extends Component {
           )
         ]
     }
-    console.log(value, postback)
   }
 
   render () {
