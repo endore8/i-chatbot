@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.7
+
+- Dependencies fix
+
 ## v0.2.6
 
 - Autoscroll
