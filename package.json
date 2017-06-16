@@ -25,16 +25,17 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "react-bootstrap": "^0.31.0"
   },
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
     "nwb": "0.16.x",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
-    "prop-types": "^15.5.10"
+    "react-scroll": "^1.5.2"
   },
   "keywords": [
     "react-component"
