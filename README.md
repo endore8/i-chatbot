@@ -35,48 +35,61 @@ Import component
 import ChatBot from 'i-chatbot' 
 ```
 
-Create a method that will handle postback events from a chatbot. 
+Create methods that will handle postback events from a chatbot. 
 It should return an array of message objects to reply on user's action identified by postback.
 
 ```
-onQuickReplyAction (postback) { 
-  switch (postback) {
-    case 'GET-STARTED':
-      return [
-        ChatBot.textMessage('Hi!'),
-        ChatBot.textMessage('How is life?',
-          ChatBot.makeReplyButton('Great!', 'INTRO'))
-      ]
+onQuickReplyAction (postback) {
+    switch (postback) {
+      case 'GET-STARTED':
+        return [
+          ChatBotUtil.textMessage(['Hi!', 'Hey there!'].any()),
+          ChatBotUtil.textMessage(['How is life?', 'What\'s up?'].any(),
+            ChatBotUtil.makeReplyButton('Great!', 'INTRO'))
+        ]
 
-    case 'INTRO':
-      return [
-        ChatBot.textMessage('That\'s good to hear!'),
-        ChatBot.textMessage('Want to know more about me?',
-          ChatBot.makeReplyButton('Sure!', 'ABOUT'),
-          ChatBot.makeReplyButton('Nope', 'END'))
-      ]
- 
-    case 'ABOUT':
-      return [
-        ChatBot.textMessage('I\'m a chatbot! 🤖',
-          ChatBot.makeReplyButton('Hah', 'END'))
-      ]
+      case 'INTRO':
+        return [
+          ChatBotUtil.textMessage('That\'s good to hear!'),
+          ChatBotUtil.textMessage('Want to know more about me?',
+            ChatBotUtil.makeReplyButton('Sure!', 'ABOUT'),
+            ChatBotUtil.makeReplyButton('Nope', 'END'))
+        ]
 
-    case 'END':
-      return [
-        ChatBot.textMessage('Ok, that\'s it for today'),
-        ChatBot.textMessage('Come back later! 😉',
-          ChatBot.makeReplyButton('Bye', 'BYE'))
-      ]
+      case 'ABOUT':
+        return [
+          ChatBotUtil.textMessage('I\'m a chatbot! 🤖'),
+          ChatBotUtil.textMessage('And u?',
+            ChatBotUtil.makeTextInputField('Send', 'Your name', 'USER-NAME'))
+        ]
+
+      case 'END':
+        return [
+          ChatBotUtil.textMessage('Ok, that\'s it for today'),
+          ChatBotUtil.textMessage('Come back later! 😉',
+            ChatBotUtil.makeReplyButton('Bye', 'BYE'))
+        ]
+    }
   }
-}
+
+ onTextInputSubmit (value, postback) {
+    switch (postback) {
+      case 'USER-NAME':
+        return [
+          ChatBotUtil.textMessage(`Welcome ${value}!`,
+            ChatBotUtil.makeReplyButton('Nice!', 'END')
+          )
+        ]
+    }
+  }
 ```
 
 Render ChatBot with the callback method and the start button object.
 
 ```
 <ChatBot onQuickReplyAction={this.onQuickReplyAction}
-         startButton={ChatBotUTIL.makeReplyButton('Get Started', 'GET-STARTED')} />
+         onTextInputSubmit={this.onTextInputSubmit}
+         startButton={ChatBotUtil.makeReplyButton('Get Started', 'GET-STARTED')} />
 ```
 
 ### ChatBot
