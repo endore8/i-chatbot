@@ -76,18 +76,21 @@ Render ChatBot with the callback method and the start button object.
 
 ```
 <ChatBot onQuickReplyAction={this.onQuickReplyAction}
-         startButton={ChatBot.makeReplyButton('Get Started', 'GET-STARTED')} />
+         startButton={ChatBotUTIL.makeReplyButton('Get Started', 'GET-STARTED')} />
 ```
 
-### Props
+### ChatBot
+
+### *Props*
 
 | Prop               | Default       | Type   | Description |
 | ------------------ |:-------------:| :------:| -----------|
 | onQuickReplyAction | -             | func   | Callback method on user's action on a quick reply button |
+| onTextInputSubmit  | -             | func   | Callback method on user's submit of text input |
 | startButton        | -             | object | Start button parameters |
 | isTypingEnabled    | true          | bool   | Typing delay |
 
-### Methods
+### *Methods*
 
 #### simulate (text, action)
 
@@ -99,6 +102,10 @@ Parameters:
 | ------- |:---------:| ------------|
 | text    | string    | Message text |
 | action  | string    | Postback action event |
+
+### ChatBotUtil
+
+### *Methods*
 
 #### textMessage (text, ...actions)
 
@@ -121,6 +128,18 @@ Parameters:
 | -------- |:------:| ------------|
 | title    | string | Title |
 | postback | string | Postback value |
+
+#### makeTextInputField (title, postback)
+
+Create a text input field.
+
+Parameters:
+
+| Name        | Type   | Description |
+| ----------- |:------:| ------------|
+| send        | string | Title of the submit button |
+| placeholder | string | Placeholder for input field |
+| postback    | string | Postback value |
 
 ## Contribution
 

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.2.6
+
+- Autoscroll
+- Text input action
+- Array any() function
+- Updated demo styling
+
 ## v0.2.5
 
 - Build with static files
