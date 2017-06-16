@@ -11,7 +11,17 @@ class ChatBotUtil {
   static makeReplyButton (text, postback) {
     return {
       title: text,
-      postback: postback
+      postback: postback,
+      type: 'quick-reply'
+    }
+  }
+
+  static makeTextInputField (submit, placeholder, postback) {
+    return {
+      submit: submit,
+      placeholder: placeholder,
+      postback: postback,
+      type: 'text-input'
     }
   }
 }

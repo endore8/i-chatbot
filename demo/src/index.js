@@ -13,6 +13,7 @@ class Demo extends Component {
 
     this._onClick = this._onClick.bind(this)
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
+    this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
   }
 
   _onClick (e) {
@@ -25,8 +26,8 @@ class Demo extends Component {
     switch (postback) {
       case 'GET-STARTED':
         return [
-          ChatBotUtil.textMessage(['Hi!', 'A'].any()),
-          ChatBotUtil.textMessage('How is life?',
+          ChatBotUtil.textMessage(['Hi!', 'Hey there!'].any()),
+          ChatBotUtil.textMessage(['How is life?', 'What\'s up?'].any(),
             ChatBotUtil.makeReplyButton('Great!', 'INTRO'))
         ]
 
@@ -40,8 +41,9 @@ class Demo extends Component {
 
       case 'ABOUT':
         return [
-          ChatBotUtil.textMessage('I\'m a chatbot! 🤖',
-            ChatBotUtil.makeReplyButton('Hah', 'END'))
+          ChatBotUtil.textMessage('I\'m a chatbot! 🤖'),
+          ChatBotUtil.textMessage('And u?',
+            ChatBotUtil.makeTextInputField('Send', 'Your name', 'USER-NAME'))
         ]
 
       case 'END':
@@ -53,6 +55,18 @@ class Demo extends Component {
     }
   }
 
+  _onTextInputSubmit (value, postback) {
+    switch (postback) {
+      case 'USER-NAME':
+        return [
+          ChatBotUtil.textMessage(`Welcome ${value}!`,
+            ChatBotUtil.makeReplyButton('Nice!', 'END')
+          )
+        ]
+    }
+    console.log(value, postback)
+  }
+
   render () {
     return (
       <Grid className="Demo">
@@ -61,6 +75,7 @@ class Demo extends Component {
             <h1>i-chatbot demo</h1>
             <ChatBot ref={(cb) => {this.chatbot = cb}}
                      onQuickReplyAction={this._onQuickReplyAction}
+                     onTextInputSubmit={this._onTextInputSubmit}
                      startButton={ChatBotUtil.makeReplyButton('Get Started', 'GET-STARTED')} />
             <div className="Actions">
               <button onClick={this._onClick}>Simulate Get Started</button>

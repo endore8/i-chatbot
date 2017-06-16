@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import ReplyButton from './controls/ReplyButton'
+import TextInput from './controls/TextInput'
 
 import './ActionBar.css'
 
@@ -10,8 +11,15 @@ class ActionBar extends Component {
   render () {
     return (
       <div className="ActionBar">
-        {this.props.type === 'quick-reply' && (this.props.actions instanceof Array) &&
-        this.props.actions.map((action, i) => <ReplyButton {...action} key={i} />)}
+        {this.props.actions && this.props.actions.map((action, i) => {
+          switch (action.type) {
+            case 'quick-reply':
+              return <ReplyButton {...action} key={i} />
+
+            case 'text-input':
+              return <TextInput {...action} key={i} />
+          }
+        })}
       </div>
     )
   }
@@ -19,8 +27,7 @@ class ActionBar extends Component {
 }
 
 ActionBar.propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.object),
-  type: PropTypes.oneOf(['quick-reply'])
+  actions: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default ActionBar

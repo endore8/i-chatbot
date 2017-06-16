@@ -19,6 +19,7 @@ class ChatBot extends Component {
     }
 
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
+    this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
     this._onProcessed = this._onProcessed.bind(this)
 
     this._messageProcessor = new MessageProcessor()
@@ -30,11 +31,17 @@ class ChatBot extends Component {
     this._onQuickReplyAction(text, action)
   }
 
-  _onQuickReplyAction (text, action) {
+  _onQuickReplyAction (text, postback) {
     this._addMessage({text: text}, true, null)
+    this._processNext(this.props.onQuickReplyAction(postback))
+  }
 
-    let next = this.props.onQuickReplyAction(action)
+  _onTextInputSubmit (value, postback) {
+    this._addMessage(value.length ? {text: value} : null, true, null)
+    this._processNext(this.props.onTextInputSubmit(value, postback))
+  }
 
+  _processNext (next) {
     if (!next) return
 
     ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
@@ -46,26 +53,25 @@ class ChatBot extends Component {
 
   _addMessage (message, isInbound, actions) {
     this.setState((prevState, props) => ({
-      messages: prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})),
-      actions: actions
+      messages: message ? prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})) : prevState.messages,
+      actions: actions || []
     }))
   }
 
   render () {
-    let actions
-    let actionBarType
-
-    if (this.state.actions) {
-      actions = this.state.actions
-      actions = actions.map((action) => Object.assign({}, action, {onAction: this._onQuickReplyAction}))
-      actionBarType = 'quick-reply'
-    }
-
     return (
       <div className='ChatBot'>
         <Messages messages={this.state.messages}
                   isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
-        <ActionBar actions={actions} type={actionBarType} />
+        <ActionBar actions={this.state.actions.map((action) => {
+          switch (action.type) {
+            case 'quick-reply':
+              return Object.assign({}, action, {onAction: this._onQuickReplyAction})
+
+            case 'text-input':
+              return Object.assign({}, action, {onSubmit: this._onTextInputSubmit})
+          }
+        })} />
       </div>
     )
   }
@@ -76,7 +82,8 @@ ChatBot.defaultProps = {
 }
 
 ChatBot.propTypes = {
-  onQuickReplyAction: PropTypes.func.isRequired,
+  onQuickReplyAction: PropTypes.func,
+  onTextInputSubmit: PropTypes.func,
   startButton: PropTypes.object,
   isTypingEnabled: PropTypes.bool
 }
