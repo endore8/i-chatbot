@@ -62,7 +62,9 @@ class Demo extends Component {
             <ChatBot ref={(cb) => {this.chatbot = cb}}
                      onQuickReplyAction={this._onQuickReplyAction}
                      startButton={ChatBotUtil.makeReplyButton('Get Started', 'GET-STARTED')} />
-            <button onClick={this._onClick}>Simulate Get Started</button>
+            <div className="Actions">
+              <button onClick={this._onClick}>Simulate Get Started</button>
+            </div>
           </Col>
         </Row>
       </Grid>

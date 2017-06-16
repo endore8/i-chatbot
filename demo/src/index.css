@@ -1,4 +1,14 @@
 .Demo .ChatBot {
-  background-color: lavenderblush;
+  background-color: ghostwhite;
   height: 20em;
+}
+.Demo .Actions {
+  padding: 1em 0;
+}
+.Demo .Actions button {
+  background-color: lightgrey;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  padding: 0.5em 1em;
 }
