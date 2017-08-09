@@ -16,6 +16,11 @@
   background-color: darkgray;
   color: white;
   text-align: right;
+  -webkit-animation-name: message-in;
+  -moz-animation-name: message-in;
+  -o-animation-name: message-in;
+  animation-name: message-in;
+  animation-duration: 0.5s;
 }
 .Message-Outbound {
   align-items: flex-start;
@@ -25,4 +30,31 @@
   background-color: lightgray;
   color: black;
   text-align: left;
+  -webkit-animation-name: message-out;
+  -moz-animation-name: message-out;
+  -o-animation-name: message-out;
+  animation-name: message-out;
+  animation-duration: 0.5s;
+}
+@keyframes message-out {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  20% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes message-in {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  20% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }

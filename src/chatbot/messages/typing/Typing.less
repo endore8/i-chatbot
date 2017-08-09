@@ -4,6 +4,10 @@
   display: table;
   padding: 1em;
   width: auto;
+
+  animation-name: appearance;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
 }
 
 .Typing span {
@@ -40,5 +44,14 @@
 @keyframes blink {
   50% {
     opacity: 1;
+  }
+}
+
+@keyframes appearance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
   }
 }
