@@ -5,12 +5,14 @@ import ReplyButton from './controls/ReplyButton'
 import TextInput from './controls/TextInput'
 
 class ActionBar extends Component {
-
   render () {
     return (
       <div className="ActionBar">
         {this.props.actions && this.props.actions.map((action, i) => {
           switch (action.type) {
+            case 'get-started':
+              return <ReplyButton {...action} key={i} />
+
             case 'quick-reply':
               return <ReplyButton {...action} key={i} />
 
@@ -21,7 +23,6 @@ class ActionBar extends Component {
       </div>
     )
   }
-
 }
 
 ActionBar.propTypes = {

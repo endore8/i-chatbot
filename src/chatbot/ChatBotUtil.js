@@ -8,6 +8,14 @@ class ChatBotUtil {
     }
   }
 
+  static makeGetStartedButton (text) {
+    return {
+      title: text,
+      postback: 'GET-STARTED',
+      type: 'get-started'
+    }
+  }
+
   static makeReplyButton (text, postback) {
     return {
       title: text,

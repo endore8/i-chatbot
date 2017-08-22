@@ -12,10 +12,11 @@ class ChatBot extends Component {
     super(props)
 
     this.state = {
-      actions: props.startButton ? [props.startButton] : [],
+      actions: props.getStartedButton ? [props.getStartedButton] : [],
       messages: []
     }
 
+    this._onGetStarted = this._onGetStarted.bind(this)
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
     this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
     this._onProcessed = this._onProcessed.bind(this)
@@ -27,6 +28,11 @@ class ChatBot extends Component {
 
   simulate (text, action) {
     this._onQuickReplyAction(text, action)
+  }
+
+  _onGetStarted (text) {
+    this._addMessage({text: text}, true, null)
+    this._processNext(this.props.onGetStarted())
   }
 
   _onQuickReplyAction (text, postback) {
@@ -63,6 +69,9 @@ class ChatBot extends Component {
                   isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
         <ActionBar actions={this.state.actions.map((action) => {
           switch (action.type) {
+            case 'get-started':
+              return Object.assign({}, action, {onAction: this._onGetStarted})
+
             case 'quick-reply':
               return Object.assign({}, action, {onAction: this._onQuickReplyAction})
 
@@ -80,9 +89,10 @@ ChatBot.defaultProps = {
 }
 
 ChatBot.propTypes = {
+  onGetStarted: PropTypes.func.isRequired,
   onQuickReplyAction: PropTypes.func,
   onTextInputSubmit: PropTypes.func,
-  startButton: PropTypes.object,
+  getStartedButton: PropTypes.object,
   isTypingEnabled: PropTypes.bool
 }
 

@@ -12,6 +12,7 @@ class Demo extends Component {
     super(props)
 
     this._onClick = this._onClick.bind(this)
+    this._onGetStarted = this._onGetStarted.bind(this)
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
     this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
   }
@@ -22,15 +23,16 @@ class Demo extends Component {
     this.chatbot.simulate('Get Started', 'GET-STARTED')
   }
 
+  _onGetStarted () {
+    return [
+      ChatBotUtil.textMessage(['Hi!', 'Hey there!'].any()),
+      ChatBotUtil.textMessage(['How is life?', 'What\'s up?'].any(),
+        ChatBotUtil.makeReplyButton('Great!', 'INTRO'))
+    ]
+  }
+
   _onQuickReplyAction (postback) {
     switch (postback) {
-      case 'GET-STARTED':
-        return [
-          ChatBotUtil.textMessage(['Hi!', 'Hey there!'].any()),
-          ChatBotUtil.textMessage(['How is life?', 'What\'s up?'].any(),
-            ChatBotUtil.makeReplyButton('Great!', 'INTRO'))
-        ]
-
       case 'INTRO':
         return [
           ChatBotUtil.textMessage('That\'s good to hear!'),
@@ -73,9 +75,10 @@ class Demo extends Component {
           <Col xs={12} xsOffset={0} sm={10} smOffset={1} md={8} mdOffset={2}>
             <h1>i-chatbot demo</h1>
             <ChatBot ref={(cb) => {this.chatbot = cb}}
+                     onGetStarted={this._onGetStarted}
                      onQuickReplyAction={this._onQuickReplyAction}
                      onTextInputSubmit={this._onTextInputSubmit}
-                     startButton={ChatBotUtil.makeReplyButton('Get Started', 'GET-STARTED')} />
+                     getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
             <div className="Actions">
               <button onClick={this._onClick}>Simulate Get Started</button>
             </div>
