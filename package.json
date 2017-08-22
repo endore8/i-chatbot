@@ -22,10 +22,13 @@
     "less": "lessc src/styles.less src/styles.css",
     "prepublish": "npm run build -- --copy-files",
     "start": "npm run less && nwb serve-react-demo",
-    "test": "npm run lessless && nwb test-react",
+    "test": "npm run less && nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
+  "pre-commit": [
+    "test"
+  ],
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
@@ -38,7 +41,8 @@
   },
   "devDependencies": {
     "less": "^2.7.2",
-    "nwb": "0.16.x"
+    "nwb": "0.16.x",
+    "pre-commit": "^1.2.2"
   },
   "keywords": [
     "react-component"
