@@ -37,6 +37,7 @@
     "react": "15.x"
   },
   "devDependencies": {
+    "less": "^2.7.2",
     "nwb": "0.16.x"
   },
   "keywords": [
