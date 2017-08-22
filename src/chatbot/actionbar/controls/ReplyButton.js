@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import './ReplyButton.css'
-
 class ReplyButton extends Component {
   constructor (props) {
     super(props)

@@ -21,7 +21,7 @@ describe('ChatBot', () => {
     render(<ChatBot startButton={ChatBotUtil.makeReplyButton('Start', 'START')}
                     onQuickReplyAction={onQuickReplyAction} />, node, () => {
       expect(node.children.length).toEqual(1)
-      expect(node.firstChild.className).toEqual('ChatBot')
+      expect(node.firstChild.className).toEqual('I-ChatBot')
     })
   })
 })

@@ -6,8 +6,6 @@ import Messages from './messages/Messages'
 
 import MessageProcessor from './MessageProcessor'
 
-import './ChatBot.css'
-
 class ChatBot extends Component {
 
   constructor (props) {

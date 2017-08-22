@@ -5,8 +5,6 @@ import Scroll from 'react-scroll'
 import Message from './message/Message'
 import Typing from './typing/Typing'
 
-import './Messages.css'
-
 const Element = Scroll.Element
 const Scroller = Scroll.scroller
 

@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import ReplyButton from './controls/ReplyButton'
 import TextInput from './controls/TextInput'
 
-import './ActionBar.css'
-
 class ActionBar extends Component {
 
   render () {

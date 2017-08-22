@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import './TextInput.css'
-
 class TextInput extends Component {
   constructor (props) {
     super(props)

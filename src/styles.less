@@ -1,0 +1,180 @@
+.I-ChatBot {
+  padding: 0.5em;
+  position: relative;
+
+  .ActionBar {
+    bottom: 0.5em;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+
+    .ReplyButton {
+      background-color: lightblue;
+      border: none;
+      border-radius: 6px;
+      margin: 0 0.5em;
+      outline: none;
+      padding: 0.5em 1em;
+    }
+
+    .TextInput {
+      .Input {
+        border: none;
+        border-radius: 6px;
+        outline: none;
+        padding: 0.5em 1em;
+      }
+
+      .Submit {
+        background-color: lightblue;
+        border: none;
+        border-radius: 6px;
+        margin: 0 0.5em;
+        outline: none;
+        padding: 0.5em 1em;
+      }
+    }
+  }
+
+  .Messages {
+    left: 0;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 3em;
+
+    .Message {
+      overflow: hidden;
+      display: flex;
+      margin: 0.25em 0;
+
+      .Message-Content {
+        border-radius: 6px;
+        max-width: 60%;
+        padding: 0.5em 1em;
+      }
+    }
+
+    .Message-Inbound {
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      .Message-Content {
+        background-color: darkgray;
+        color: white;
+        text-align: right;
+
+        -webkit-animation-name: message-in;
+        -moz-animation-name: message-in;
+        -o-animation-name: message-in;
+        animation-name: message-in;
+        animation-duration: 0.5s;
+      }
+    }
+
+    .Message-Outbound {
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .Message-Content {
+        background-color: lightgray;
+        color: black;
+        text-align: left;
+
+        -webkit-animation-name: message-out;
+        -moz-animation-name: message-out;
+        -o-animation-name: message-out;
+        animation-name: message-out;
+        animation-duration: 0.5s;
+      }
+    }
+
+    @keyframes message-out {
+      0% {
+        transform: translate3d(-100%, 0, 0);
+      }
+      20% {
+        transform: translate3d(-100%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes message-in {
+      0% {
+        transform: translate3d(100%, 0, 0);
+      }
+      20% {
+        transform: translate3d(100%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .Typing {
+      background-color: lightgray;
+      border-radius: 6px;
+      display: table;
+      padding: 1em;
+      width: auto;
+
+      animation-name: appearance;
+      animation-duration: 0.2s;
+      animation-timing-function: ease-out;
+    }
+
+    .Typing span {
+      background-color: darkgray;
+      border-radius: 50%;
+      float: left;
+      height: 0.5em;
+      margin: 0 0.2em;
+      opacity: 0.4;
+      width: 0.5em;
+    }
+
+    .Typing span:nth-of-type(1) {
+      -webkit-animation: 1s blink infinite 0.3333s;
+      animation: 1s blink infinite 0.3333s;
+    }
+
+    .Typing span:nth-of-type(2) {
+      -webkit-animation: 1s blink infinite 0.6666s;
+      animation: 1s blink infinite 0.6666s;
+    }
+
+    .Typing span:nth-of-type(3) {
+      -webkit-animation: 1s blink infinite 0.9999s;
+      animation: 1s blink infinite 0.9999s;
+    }
+
+    @-webkit-keyframes blink {
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes appearance {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 100;
+      }
+    }
+  }
+}

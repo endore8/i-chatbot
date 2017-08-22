@@ -2,10 +2,10 @@
   background-color: ghostwhite;
   height: 20em;
 }
-.Demo .Actions {
+.Demo .I-ChatBot .Actions {
   padding: 1em 0;
 }
-.Demo .Actions button {
+.Demo .I-ChatBot .Actions button {
   background-color: lightgrey;
   border: none;
   border-radius: 6px;
