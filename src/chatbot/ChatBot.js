@@ -60,7 +60,7 @@ class ChatBot extends Component {
 
   render () {
     return (
-      <div className='ChatBot'>
+      <div className='I-ChatBot'>
         <Messages messages={this.state.messages}
                   isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
         <ActionBar actions={this.state.actions.map((action) => {
