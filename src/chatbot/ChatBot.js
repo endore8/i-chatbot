@@ -65,20 +65,22 @@ class ChatBot extends Component {
   render () {
     return (
       <div className='I-ChatBot'>
-        <Messages messages={this.state.messages}
-                  isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
-        <ActionBar actions={this.state.actions.map((action) => {
-          switch (action.type) {
-            case 'get-started':
-              return Object.assign({}, action, {onAction: this._onGetStarted})
+        <Messages
+          messages={this.state.messages}
+          isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
+        <ActionBar
+          actions={this.state.actions.map((action) => {
+            switch (action.type) {
+              case 'get-started':
+                return Object.assign({}, action, {onAction: this._onGetStarted})
 
-            case 'quick-reply':
-              return Object.assign({}, action, {onAction: this._onQuickReplyAction})
+              case 'quick-reply':
+                return Object.assign({}, action, {onAction: this._onQuickReplyAction})
 
-            case 'text-input':
-              return Object.assign({}, action, {onSubmit: this._onTextInputSubmit})
-          }
-        })} />
+              case 'text-input':
+                return Object.assign({}, action, {onSubmit: this._onTextInputSubmit})
+            }
+          })} />
       </div>
     )
   }

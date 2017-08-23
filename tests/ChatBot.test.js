@@ -7,7 +7,7 @@ import ChatBot, { ChatBotUtil } from 'src/'
 describe('ChatBot', () => {
   let node
 
-  const onQuickReplyAction = () => {}
+  const onGetStarted = () => {}
 
   beforeEach(() => {
     node = document.createElement('div')
@@ -18,10 +18,12 @@ describe('ChatBot', () => {
   })
 
   it('Renders view', () => {
-    render(<ChatBot startButton={ChatBotUtil.makeReplyButton('Start', 'START')}
-                    onQuickReplyAction={onQuickReplyAction} />, node, () => {
-      expect(node.children.length).toEqual(1)
-      expect(node.firstChild.className).toEqual('I-ChatBot')
-    })
+    render(
+      <ChatBot getStartedButton={ChatBotUtil.makeGetStartedButton('Start')}
+               onGetStarted={onGetStarted} />, node, () => {
+        expect(node.children.length).toEqual(1)
+        expect(node.firstChild.className).toEqual('I-ChatBot')
+      }
+    )
   })
 })
