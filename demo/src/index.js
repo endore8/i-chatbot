@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-bootstrap'
 import { render } from 'react-dom'
 
 import ChatBot, { ChatBotUtil } from '../../src'
@@ -70,21 +69,19 @@ class Demo extends Component {
 
   render () {
     return (
-      <Grid className="Demo">
-        <Row>
-          <Col xs={12} xsOffset={0} sm={10} smOffset={1} md={8} mdOffset={2}>
-            <h1>i-chatbot demo</h1>
-            <ChatBot ref={(cb) => {this.chatbot = cb}}
-                     onGetStarted={this._onGetStarted}
-                     onQuickReplyAction={this._onQuickReplyAction}
-                     onTextInputSubmit={this._onTextInputSubmit}
-                     getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
-            <div className="Actions">
-              <button onClick={this._onClick}>Simulate Get Started</button>
-            </div>
-          </Col>
-        </Row>
-      </Grid>
+      <div className="Demo Container">
+        <div className="Content">
+          <h1>i-chatbot demo</h1>
+          <ChatBot ref={(cb) => {this.chatbot = cb}}
+                   onGetStarted={this._onGetStarted}
+                   onQuickReplyAction={this._onQuickReplyAction}
+                   onTextInputSubmit={this._onTextInputSubmit}
+                   getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
+          <div className="Actions">
+            <button onClick={this._onClick}>Simulate Get Started</button>
+          </div>
+        </div>
+      </div>
     )
   }
 }
