@@ -9,14 +9,15 @@ class TextInput extends Component {
       inputValue: ''
     }
 
+    this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.updateInputValue = this.updateInputValue.bind(this)
   }
 
-  updateInputValue (e) {
-    this.setState({
-      inputValue: e.target.value
-    })
+  handleKeyPress (e) {
+    if (e.key === 'Enter') {
+      this.props.onSubmit(this.state.inputValue, this.props.postback)
+    }
   }
 
   handleSubmit (e) {
@@ -25,13 +26,20 @@ class TextInput extends Component {
     this.props.onSubmit(this.state.inputValue, this.props.postback)
   }
 
+  updateInputValue (e) {
+    this.setState({
+      inputValue: e.target.value
+    })
+  }
+
   render () {
     return (
       <div className="TextInput">
         <input className="Input"
                placeholder={this.props.placeholder}
                onChange={this.updateInputValue}
-               onSubmit={this.handleSubmit} />
+               onSubmit={this.handleSubmit}
+               onKeyPress={this.handleKeyPress} />
         <button className="Submit" onClick={this.handleSubmit}>{this.props.submit}</button>
       </div>
     )
