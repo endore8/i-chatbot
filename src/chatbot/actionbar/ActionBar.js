@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import GetStartedButton from './controls/GetStartedButton'
 import ReplyButton from './controls/ReplyButton'
 import TextInput from './controls/TextInput'
 
@@ -11,7 +12,7 @@ class ActionBar extends Component {
         {this.props.actions && this.props.actions.map((action, i) => {
           switch (action.type) {
             case 'get-started':
-              return <ReplyButton {...action} key={i} />
+              return <GetStartedButton {...action} key={i} />
 
             case 'quick-reply':
               return <ReplyButton {...action} key={i} />
