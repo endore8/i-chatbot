@@ -77,7 +77,7 @@ class Demo extends Component {
                    onQuickReplyAction={this._onQuickReplyAction}
                    onTextInputSubmit={this._onTextInputSubmit}
                    getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
-          <div className="Actions">
+          <div className="Extra-Actions">
             <button onClick={this._onClick}>Simulate Get Started</button>
           </div>
         </div>

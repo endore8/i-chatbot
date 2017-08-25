@@ -34,7 +34,8 @@ html, body {
 .Demo {
   .I-ChatBot {
     background-color: ghostwhite;
-    height: 20em;
+
+    .absolute(6em, 4em, 1em);
 
     .Actions {
       padding: 1em 0;
@@ -47,6 +48,12 @@ html, body {
         padding: 0.5em 1em;
       }
     }
+  }
+
+  .Extra-Actions {
+    .absolute(auto, 1em, 1em);
+
+    height: 2em;
   }
 }
 
@@ -71,8 +78,17 @@ html, body {
 }
 
 .absolute (@distance) {
+  position: absolute;
   left: @distance;
   right: @distance;
   bottom: @distance;
   top: @distance;
+}
+
+.absolute(@top, @bottom, @horizontal) {
+  position: absolute;
+  left: @horizontal;
+  right: @horizontal;
+  bottom: @bottom;
+  top: @top;
 }
