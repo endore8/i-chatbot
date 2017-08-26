@@ -30,6 +30,18 @@ class ChatBot extends Component {
     this._onQuickReplyAction(text, action)
   }
 
+  startOver () {
+    this._messageProcessor.reset()
+    this.setState((prevState, props) => ({
+      actions: props.getStartedButton ? [props.getStartedButton] : [],
+      messages: []
+    }))
+
+    if (!this.props.getStartedButton) {
+      this._processNext(this.props.onGetStarted())
+    }
+  }
+
   _onGetStarted (text) {
     this._addMessage({text: text}, true, null)
     this._processNext(this.props.onGetStarted())
@@ -57,8 +69,8 @@ class ChatBot extends Component {
 
   _addMessage (message, isInbound, actions) {
     this.setState((prevState, props) => ({
-      messages: message ? prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})) : prevState.messages,
-      actions: actions || []
+      actions: actions || [],
+      messages: message ? prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})) : prevState.messages
     }))
   }
 

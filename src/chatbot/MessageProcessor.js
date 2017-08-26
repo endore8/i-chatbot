@@ -19,6 +19,12 @@ class MessageProcessor {
     this._processNext()
   }
 
+  reset () {
+    clearTimeout(this._timeoutId)
+    this._timeoutId = null
+    this._queue = []
+  }
+
   _processNext () {
     if (this.isProcessing || !this._queue.length) return
 
