@@ -1,5 +1,7 @@
 # i-chatbot
 
+![Icon](https://raw.githubusercontent.com/endore8/i-chatbot/master/assets/icon.png)
+
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
