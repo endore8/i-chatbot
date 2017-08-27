@@ -13,13 +13,13 @@ class ActionBar extends Component {
           {this.props.actions && this.props.actions.map((action, i) => {
             switch (action.type) {
               case 'get-started':
-                return <li><GetStartedButton {...action} key={i} /></li>
+                return <li key={i}><GetStartedButton {...action} key={i} /></li>
 
               case 'quick-reply':
-                return <li><ReplyButton {...action} key={i} /></li>
+                return <li key={i}><ReplyButton {...action} key={i} /></li>
 
               case 'text-input':
-                return <li><TextInput {...action} key={i} /></li>
+                return <li key={i}><TextInput {...action} key={i} /></li>
             }
           })}
         </ul>
