@@ -70,12 +70,6 @@ class ChatBot extends Component {
     }))
   }
 
-  componentDidMount () {
-    if (!this.props.getStartedButton) {
-      this._processNext(this.props.onGetStarted())
-    }
-  }
-
   render () {
     return (
       <div className='I-ChatBot'>
