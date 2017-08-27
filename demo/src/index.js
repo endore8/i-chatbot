@@ -10,17 +10,10 @@ class Demo extends Component {
   constructor (props) {
     super(props)
 
-    this._onSimulate = this._onSimulate.bind(this)
     this._onStartOver = this._onStartOver.bind(this)
     this._onGetStarted = this._onGetStarted.bind(this)
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
     this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
-  }
-
-  _onSimulate (e) {
-    e.preventDefault()
-
-    this.chatbot.simulate('Get Started', 'GET-STARTED')
   }
 
   _onStartOver (e) {
@@ -85,7 +78,6 @@ class Demo extends Component {
                    onTextInputSubmit={this._onTextInputSubmit}
                    getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
           <div className="Extra-Actions">
-            <button onClick={this._onSimulate}>Simulate Get Started</button>
             <button onClick={this._onStartOver}>Start Over</button>
           </div>
         </div>

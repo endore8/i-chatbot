@@ -26,10 +26,6 @@ class ChatBot extends Component {
     this._messageProcessor.onProcessed = this._onProcessed
   }
 
-  simulate (text, action) {
-    this._onQuickReplyAction(text, action)
-  }
-
   startOver () {
     this._messageProcessor.reset()
     this.setState((prevState, props) => ({
