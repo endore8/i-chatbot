@@ -1,8 +1,7 @@
 class MessageProcessor {
-
-  constructor () {
-    this.onProcessed = null
-    this.isTypingEnabled = true
+  constructor (onProcessed, isTypingEnabled = true) {
+    this.onProcessed = onProcessed
+    this.isTypingEnabled = isTypingEnabled
 
     this._timeoutId = null
     this._queue = []
@@ -14,9 +13,17 @@ class MessageProcessor {
     return this._timeoutId !== null
   }
 
-  process (message) {
-    this._queue.push(message)
+  process (object) {
+    if (!object ||
+      !(object instanceof Object) ||
+      !(object.message instanceof Object) ||
+      !(object.message.text instanceof String || typeof object.message.text === 'string'))
+      return false
+
+    this._queue.push(object)
     this._processNext()
+
+    return true
   }
 
   reset () {
@@ -27,8 +34,9 @@ class MessageProcessor {
 
   _processNext () {
     if (this.isProcessing || !this._queue.length) return
+    if (!this.isTypingEnabled) return this._processed()
 
-    this._timeoutId = setTimeout(this._processed, this._typingSpeed(this._queue[0].message.text))
+    this._timeoutId = setTimeout(this._processed, MessageProcessor.typingSpeed(this._queue[0].message.text))
   }
 
   _processed () {
@@ -40,12 +48,24 @@ class MessageProcessor {
     this.onProcessed(message)
   }
 
-  _typingSpeed (text) {
-    if (!this.isTypingEnabled || !text) return 0
-
-    return Math.max(text.length / 10 * 400, 1000) // TODO: optimize range
+  static get minTypingSpeed () {
+    return 400
   }
 
+  static get maxTypingSpeed () {
+    return 2000
+  }
+
+  static typingSpeed (text) {
+    if (!text || !(text instanceof String || typeof text === 'string')) return 0
+
+    return Math.min(
+      Math.max(
+        text.length * MessageProcessor.minTypingSpeed / 10,
+        MessageProcessor.minTypingSpeed
+      ),
+      MessageProcessor.maxTypingSpeed)
+  }
 }
 
 export default MessageProcessor
