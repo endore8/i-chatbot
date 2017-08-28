@@ -16,14 +16,14 @@ class TextInput extends Component {
 
   handleKeyPress (e) {
     if (e.key === 'Enter') {
-      this.props.onSubmit(this.state.inputValue, this.props.postback)
+      this.props.onSubmit(this.state.inputValue, this.props.callback)
     }
   }
 
   handleSubmit (e) {
     e.preventDefault()
 
-    this.props.onSubmit(this.state.inputValue, this.props.postback)
+    this.props.onSubmit(this.state.inputValue, this.props.callback)
   }
 
   updateInputValue (e) {
@@ -49,7 +49,7 @@ class TextInput extends Component {
 TextInput.propTypes = {
   submit: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  postback: PropTypes.string.isRequired,
+  callback: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 

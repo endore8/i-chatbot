@@ -12,7 +12,7 @@ class Button extends Component {
   handleClick (e) {
     e.preventDefault()
 
-    this.props.onAction(this.props.title, this.props.postback)
+    this.props.onAction(this.props.title, this.props.callback)
   }
 
   render () {
@@ -24,7 +24,7 @@ class Button extends Component {
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,
-  postback: PropTypes.string.isRequired,
+  callback: PropTypes.func,
   onAction: PropTypes.func.isRequired
 }
 

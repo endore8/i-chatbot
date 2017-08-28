@@ -41,14 +41,14 @@ class ChatBot extends Component {
     this._processNext(this.props.onGetStarted())
   }
 
-  _onQuickReplyAction (text, postback) {
+  _onQuickReplyAction (text, callback) {
     this._addMessage({text: text}, true, null)
-    this._processNext(this.props.onQuickReplyAction(postback))
+    if (callback) this._processNext(callback())
   }
 
-  _onTextInputSubmit (value, postback) {
+  _onTextInputSubmit (value, callback) {
     this._addMessage(value.length ? {text: value} : null, true, null)
-    this._processNext(this.props.onTextInputSubmit(value, postback))
+    this._processNext(callback(value))
   }
 
   _processNext (next) {
@@ -98,8 +98,6 @@ ChatBot.defaultProps = {
 
 ChatBot.propTypes = {
   onGetStarted: PropTypes.func.isRequired,
-  onQuickReplyAction: PropTypes.func,
-  onTextInputSubmit: PropTypes.func,
   getStartedButton: PropTypes.object,
   isTypingEnabled: PropTypes.bool
 }

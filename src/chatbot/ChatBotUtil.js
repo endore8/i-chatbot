@@ -11,24 +11,23 @@ class ChatBotUtil {
   static makeGetStartedButton (text) {
     return {
       title: text,
-      postback: 'GET-STARTED',
       type: 'get-started'
     }
   }
 
-  static makeReplyButton (text, postback) {
+  static makeReplyButton (text, callback) {
     return {
       title: text,
-      postback: postback,
+      callback: callback,
       type: 'quick-reply'
     }
   }
 
-  static makeTextInputField (submit, placeholder, postback) {
+  static makeTextInputField (submit, placeholder, callback) {
     return {
       submit: submit,
       placeholder: placeholder,
-      postback: postback,
+      callback: callback,
       type: 'text-input'
     }
   }
