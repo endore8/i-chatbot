@@ -1,13 +1,15 @@
-# i-chatbot
-
-![Icon](https://raw.githubusercontent.com/endore8/i-chatbot/master/assets/icon.png)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/endore8/i-chatbot/master/assets/icon.png" max-width="90%" alt="Marathon" />
+</p>
+<h1 align="center">i-chatbot</h1>
+<p align="center">
+Simple and elegant component for building conversational interfaces on React.
+</p>
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 [![License: MIT][mit-badge]][mit]
-
-Chatbot component for React.
 
 [build-badge]: https://img.shields.io/travis/Endore8/i-chatbot.svg?branch=master
 [build]: https://travis-ci.org/Endore8/i-chatbot
