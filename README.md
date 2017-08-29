@@ -36,7 +36,7 @@ npm i i-chatbot --save
 Import component
 
 ```
-import ChatBot from 'i-chatbot' 
+import ChatBot, { ChatBotUtil } from 'i-chatbot' 
 ```
 
 Create methods that will handle postback events from a chatbot. 
@@ -109,16 +109,9 @@ Render ChatBot with the callback method and the start button object.
 
 ### *Methods*
 
-#### simulate (text, action)
+#### startOver ()
 
-Simulate user action (postback).
-
-Parameters:
-
-| Name    | Type      | Description |
-| ------- |:---------:| ------------|
-| text    | string    | Message text |
-| action  | string    | Postback action event |
+Resets a state of chat.
 
 ### ChatBotUtil
 

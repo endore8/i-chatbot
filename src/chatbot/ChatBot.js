@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import MessageProcessor from './MessageProcessor'
+
 import ActionBar from './actionbar/ActionBar'
 import Messages from './messages/Messages'
 
-import MessageProcessor from './MessageProcessor'
-
 class ChatBot extends Component {
-
   constructor (props) {
     super(props)
 
