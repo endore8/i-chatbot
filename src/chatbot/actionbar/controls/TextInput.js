@@ -9,27 +9,9 @@ class TextInput extends Component {
       inputValue: ''
     }
 
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.updateInputValue = this.updateInputValue.bind(this)
-  }
-
-  handleKeyPress (e) {
-    if (e.key === 'Enter') {
-      this.props.onSubmit(this.state.inputValue, this.props.callback)
-    }
-  }
-
-  handleSubmit (e) {
-    e.preventDefault()
-
-    this.props.onSubmit(this.state.inputValue, this.props.callback)
-  }
-
-  updateInputValue (e) {
-    this.setState({
-      inputValue: e.target.value
-    })
+    this._handleKeyPress = this._handleKeyPress.bind(this)
+    this._handleSubmit = this._handleSubmit.bind(this)
+    this._updateInputValue = this._updateInputValue.bind(this)
   }
 
   render () {
@@ -37,12 +19,30 @@ class TextInput extends Component {
       <div className="TextInput">
         <input className="Input"
                placeholder={this.props.placeholder}
-               onChange={this.updateInputValue}
-               onSubmit={this.handleSubmit}
-               onKeyPress={this.handleKeyPress} />
-        <button className="Submit" onClick={this.handleSubmit}>{this.props.submit}</button>
+               onChange={this._updateInputValue}
+               onSubmit={this._handleSubmit}
+               onKeyPress={this._handleKeyPress} />
+        <button className="Submit" onClick={this._handleSubmit}>{this.props.submit}</button>
       </div>
     )
+  }
+
+  _handleKeyPress (e) {
+    if (e.key === 'Enter') {
+      this.props.onSubmit(this.state.inputValue, this.props.callback)
+    }
+  }
+
+  _handleSubmit (e) {
+    e.preventDefault()
+
+    this.props.onSubmit(this.state.inputValue, this.props.callback)
+  }
+
+  _updateInputValue (e) {
+    this.setState({
+      inputValue: e.target.value
+    })
   }
 }
 

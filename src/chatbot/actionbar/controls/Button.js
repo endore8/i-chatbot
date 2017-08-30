@@ -5,20 +5,20 @@ class Button extends Component {
   constructor (props) {
     super(props)
 
-    this.handleClick = this.handleClick.bind(this)
+    this._handleClick = this._handleClick.bind(this)
     this.buttonClassName = ""
-  }
-
-  handleClick (e) {
-    e.preventDefault()
-
-    this.props.onAction(this.props.title, this.props.callback)
   }
 
   render () {
     return (
-      <button className={this.buttonClassName} onClick={this.handleClick}>{this.props.title}</button>
+      <button className={this.buttonClassName} onClick={this._handleClick}>{this.props.title}</button>
     )
+  }
+
+  _handleClick (e) {
+    e.preventDefault()
+
+    this.props.onAction(this.props.title, this.props.callback)
   }
 }
 

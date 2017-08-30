@@ -13,12 +13,6 @@ class Demo extends Component {
     this._onStartOver = this._onStartOver.bind(this)
   }
 
-  _onStartOver (e) {
-    e.preventDefault()
-
-    this.chatbot.startOver()
-  }
-
   render () {
     return (
       <div className="Demo Container">
@@ -33,6 +27,12 @@ class Demo extends Component {
         </div>
       </div>
     )
+  }
+
+  _onStartOver (e) {
+    e.preventDefault()
+
+    this.chatbot.startOver()
   }
 }
 

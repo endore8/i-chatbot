@@ -23,50 +23,6 @@ class ChatBot extends Component {
     this._messageProcessor = new MessageProcessor(this._onProcessed, props.isTypingEnabled)
   }
 
-  startOver () {
-    this._messageProcessor.reset()
-    this.setState((prevState, props) => ({
-      actions: props.getStartedButton ? [props.getStartedButton] : [],
-      messages: []
-    }))
-
-    if (!this.props.getStartedButton) {
-      this._processNext(this.props.onGetStarted())
-    }
-  }
-
-  _onGetStarted (text) {
-    this._addMessage({text: text}, true, null)
-    this._processNext(this.props.onGetStarted())
-  }
-
-  _onQuickReplyAction (text, callback) {
-    this._addMessage({text: text}, true, null)
-    if (callback) this._processNext(callback())
-  }
-
-  _onTextInputSubmit (value, callback) {
-    this._addMessage(value.length ? {text: value} : null, true, null)
-    this._processNext(callback(value))
-  }
-
-  _processNext (next) {
-    if (!next) return
-
-    ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
-  }
-
-  _onProcessed (message) {
-    this._addMessage(message.message, false, this._messageProcessor.isProcessing ? null : message.actions)
-  }
-
-  _addMessage (message, isInbound, actions) {
-    this.setState((prevState, props) => ({
-      actions: actions || [],
-      messages: message ? prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})) : prevState.messages
-    }))
-  }
-
   render () {
     return (
       <div className='I-ChatBot'>
@@ -88,6 +44,50 @@ class ChatBot extends Component {
           })} />
       </div>
     )
+  }
+
+  startOver () {
+    this._messageProcessor.reset()
+    this.setState((prevState, props) => ({
+      actions: props.getStartedButton ? [props.getStartedButton] : [],
+      messages: []
+    }))
+
+    if (!this.props.getStartedButton) {
+      this._processNext(this.props.onGetStarted())
+    }
+  }
+
+  _addMessage (message, isInbound, actions) {
+    this.setState((prevState, props) => ({
+      actions: actions || [],
+      messages: message ? prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})) : prevState.messages
+    }))
+  }
+
+  _onGetStarted (text) {
+    this._addMessage({text: text}, true, null)
+    this._processNext(this.props.onGetStarted())
+  }
+
+  _onProcessed (message) {
+    this._addMessage(message.message, false, this._messageProcessor.isProcessing ? null : message.actions)
+  }
+
+  _onQuickReplyAction (text, callback) {
+    this._addMessage({text: text}, true, null)
+    if (callback) this._processNext(callback())
+  }
+
+  _onTextInputSubmit (value, callback) {
+    this._addMessage(value.length ? {text: value} : null, true, null)
+    this._processNext(callback(value))
+  }
+
+  _processNext (next) {
+    if (!next) return
+
+    ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
   }
 }
 
