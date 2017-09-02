@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.2.9
+
+- Newer APIs
+- Tests
+- Added start over functionality
+- Removed simulate method
+
+## v0.2.8
+
+- Animations
+
 ## v0.2.7
 
 - Dependencies fix

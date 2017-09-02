@@ -40,60 +40,29 @@ import ChatBot, { ChatBotUtil } from 'i-chatbot'
 ```
 
 Create methods that will handle postback events from a chatbot. 
-It should return an array of message objects to reply on user's action identified by postback.
+It should return an array of message objects to reply on user's action with a callback.
 
 ```
-onQuickReplyAction (postback) {
-    switch (postback) {
-      case 'GET-STARTED':
-        return [
-          ChatBotUtil.textMessage(['Hi!', 'Hey there!'].any()),
-          ChatBotUtil.textMessage(['How is life?', 'What\'s up?'].any(),
-            ChatBotUtil.makeReplyButton('Great!', 'INTRO'))
-        ]
-
-      case 'INTRO':
-        return [
-          ChatBotUtil.textMessage('That\'s good to hear!'),
-          ChatBotUtil.textMessage('Want to know more about me?',
-            ChatBotUtil.makeReplyButton('Sure!', 'ABOUT'),
-            ChatBotUtil.makeReplyButton('Nope', 'END'))
-        ]
-
-      case 'ABOUT':
-        return [
-          ChatBotUtil.textMessage('I\'m a chatbot! 🤖'),
-          ChatBotUtil.textMessage('And u?',
-            ChatBotUtil.makeTextInputField('Send', 'Your name', 'USER-NAME'))
-        ]
-
-      case 'END':
-        return [
-          ChatBotUtil.textMessage('Ok, that\'s it for today'),
-          ChatBotUtil.textMessage('Come back later! 😉',
-            ChatBotUtil.makeReplyButton('Bye', 'BYE'))
-        ]
-    }
+  getStarted () {
+    return [
+      ChatBotUtil.textMessage(['Hi!', 'Hey there!'].any()),
+      ChatBotUtil.textMessage(['How is life?', 'What\'s up?'].any(),
+        ChatBotUtil.makeReplyButton('Great!', this.intro))
+    ]
   }
-
- onTextInputSubmit (value, postback) {
-    switch (postback) {
-      case 'USER-NAME':
-        return [
-          ChatBotUtil.textMessage(`Welcome ${value}!`,
-            ChatBotUtil.makeReplyButton('Nice!', 'END')
-          )
-        ]
-    }
+  
+  intro () { 
+    return [
+      ChatBotUtil.textMessage('That\'s good to hear!')
+    ]
   }
 ```
 
-Render ChatBot with the callback method and the start button object.
+Render ChatBot with a get started callback method and a start button.
 
 ```
-<ChatBot onQuickReplyAction={this.onQuickReplyAction}
-         onTextInputSubmit={this.onTextInputSubmit}
-         startButton={ChatBotUtil.makeReplyButton('Get Started', 'GET-STARTED')} />
+<ChatBot onGetStarted={this.getStarted}
+         getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
 ```
 
 ### ChatBot
@@ -101,10 +70,9 @@ Render ChatBot with the callback method and the start button object.
 ### *Props*
 
 | Prop               | Default       | Type   | Description |
-| ------------------ |:-------------:| :------:| -----------|
-| onQuickReplyAction | -             | func   | Callback method on user's action on a quick reply button |
-| onTextInputSubmit  | -             | func   | Callback method on user's submit of text input |
-| startButton        | -             | object | Start button parameters |
+| ------------------ |:-------------:| :-----:| -----------|
+| onGetStarted       | -             | func   | Inital callback method to return first messages |
+| getStartedButton   | -             | object | Start button parameters |
 | isTypingEnabled    | true          | bool   | Typing delay |
 
 ### *Methods*
@@ -127,6 +95,16 @@ Parameters:
 | ------- |:---------:| ------------|
 | text    | string    | Message text |
 | actions | object(s) | Quick reply button(s) object |
+
+#### makeReplyButton (title)
+
+Create a get started button.
+
+Parameters:
+
+| Name     | Type   | Description |
+| -------- |:------:| ------------|
+| title    | string | Title |
 
 #### makeReplyButton (title, postback)
 
