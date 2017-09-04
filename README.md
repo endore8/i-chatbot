@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">i-chatbot</h1>
 <p align="center">
-Simple and elegant component for building conversational interfaces on React.
+Simple and elegant component for building conversational interfaces on React. 🤖💯✨
 </p>
 
 [![Travis][build-badge]][build]
@@ -23,7 +23,7 @@ Simple and elegant component for building conversational interfaces on React.
 [mit-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
 [mit]: https://opensource.org/licenses/MIT
 
-## Getting Started
+## Getting Started 🚀
 
 ### Installation
 
@@ -129,13 +129,19 @@ Parameters:
 | placeholder | string | Placeholder for input field |
 | postback    | string | Postback value |
 
-## Contribution
+## Built with `i-chatbot` 🤘
+
+- Personal [website](http://olehst.com) of Oleh Stasula
+
+Have you built something cool with `i-chatbot`? Submit a pull-request and add it to this list! 😉
+
+## Contribution 💪
 
 Your contribution is welcomed, no matter how big or small! 
 
 Please have a look at the [contribution guide](CONTRIBUTING.md) for details about project structure, development environment, test suite, code style, etc. 
 All the version updates are mentioned in the [changelog](CHANGELOG.md).
 
-## License
+## License 🔖
 
 The library is available as open source under the terms of the [MIT License](LICENSE).
