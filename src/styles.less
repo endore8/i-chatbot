@@ -87,12 +87,6 @@
         background-color: darkgray;
         color: white;
         text-align: right;
-
-        -webkit-animation-name: message-in;
-        -moz-animation-name: message-in;
-        -o-animation-name: message-in;
-        animation-name: message-in;
-        animation-duration: 0.5s;
       }
     }
 
@@ -104,36 +98,6 @@
         background-color: lightgray;
         color: black;
         text-align: left;
-
-        -webkit-animation-name: message-out;
-        -moz-animation-name: message-out;
-        -o-animation-name: message-out;
-        animation-name: message-out;
-        animation-duration: 0.5s;
-      }
-    }
-
-    @keyframes message-out {
-      0% {
-        transform: translate3d(-100%, 0, 0);
-      }
-      20% {
-        transform: translate3d(-100%, 0, 0);
-      }
-      100% {
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    @keyframes message-in {
-      0% {
-        transform: translate3d(100%, 0, 0);
-      }
-      20% {
-        transform: translate3d(100%, 0, 0);
-      }
-      100% {
-        transform: translate3d(0, 0, 0);
       }
     }
 
@@ -173,26 +137,65 @@
       -webkit-animation: 1s blink infinite 0.9999s;
       animation: 1s blink infinite 0.9999s;
     }
+  }
+}
 
-    @-webkit-keyframes blink {
-      50% {
-        opacity: 1;
+.I-ChatBot.Animated {
+  .Messages {
+    .Message-Inbound {
+      .Message-Content {
+        -webkit-animation-name: message-in;
+        -moz-animation-name: message-in;
+        -o-animation-name: message-in;
+        animation-name: message-in;
+        animation-duration: 0.5s;
       }
     }
 
-    @keyframes blink {
-      50% {
-        opacity: 1;
+    .Message-Outbound {
+      .Message-Content {
+        -webkit-animation-name: message-out;
+        -moz-animation-name: message-out;
+        -o-animation-name: message-out;
+        animation-name: message-out;
+        animation-duration: 0.5s;
       }
     }
+  }
+}
 
-    @keyframes appearance {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 100;
-      }
-    }
+@-webkit-keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes message-out {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  20% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes message-in {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  20% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 }

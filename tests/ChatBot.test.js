@@ -23,7 +23,7 @@ describe('ChatBot', () => {
       <ChatBot getStartedButton={ChatBotUtil.makeGetStartedButton('Start')}
                onGetStarted={onGetStarted} />, node, () => {
         expect(node.children.length).toEqual(1)
-        expect(node.firstChild.className).toEqual('I-ChatBot')
+        expect(node.firstChild.className).toEqual('I-ChatBot Animated')
       }
     )
   })
@@ -93,7 +93,7 @@ describe('ChatBot', () => {
     const rendered = render(
       <ChatBot getStartedButton={ChatBotUtil.makeGetStartedButton('Start')}
                onGetStarted={getStarted}
-               isTypingEnabled={false} />, node)
+               isAnimated={false} />, node)
 
     const startButton = ReactTestUtils.findRenderedDOMComponentWithClass(rendered, 'GetStartedButton')
     expect(startButton).toExist()

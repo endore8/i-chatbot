@@ -20,15 +20,15 @@ class ChatBot extends Component {
     this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
     this._onProcessed = this._onProcessed.bind(this)
 
-    this._messageProcessor = new MessageProcessor(this._onProcessed, props.isTypingEnabled)
+    this._messageProcessor = new MessageProcessor(this._onProcessed, props.isAnimated)
   }
 
   render () {
     return (
-      <div className='I-ChatBot'>
+      <div className={'I-ChatBot' + (this.props.isAnimated ? ' Animated' : '')}>
         <Messages
           messages={this.state.messages}
-          isTyping={this.props.isTypingEnabled && this._messageProcessor.isProcessing} />
+          isTyping={this.props.isAnimated && this._messageProcessor.isProcessing} />
         <ActionBar
           actions={this.state.actions.map((action) => {
             switch (action.type) {
@@ -92,13 +92,13 @@ class ChatBot extends Component {
 }
 
 ChatBot.defaultProps = {
-  isTypingEnabled: true
+  isAnimated: true
 }
 
 ChatBot.propTypes = {
   onGetStarted: PropTypes.func.isRequired,
   getStartedButton: PropTypes.object,
-  isTypingEnabled: PropTypes.bool
+  isAnimated: PropTypes.bool
 }
 
 export default ChatBot
