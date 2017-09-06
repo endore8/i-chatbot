@@ -16,8 +16,8 @@ class MessageProcessor {
   process (object) {
     if (!object ||
       !(object instanceof Object) ||
-      !(object.message instanceof Object) ||
-      !(object.message.text instanceof String || typeof object.message.text === 'string'))
+      !(object.content instanceof Object) ||
+      !(object.content.text instanceof String || typeof object.content.text === 'string'))
       return false
 
     this._queue.push(object)
@@ -36,7 +36,7 @@ class MessageProcessor {
     if (this.isProcessing || !this._queue.length) return
     if (!this.isTypingEnabled) return this._processed()
 
-    this._timeoutId = setTimeout(this._processed, MessageProcessor.typingSpeed(this._queue[0].message.text))
+    this._timeoutId = setTimeout(this._processed, MessageProcessor.typingSpeed(this._queue[0].content.text))
   }
 
   _processed () {

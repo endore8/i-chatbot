@@ -2,7 +2,7 @@ import expect from 'expect'
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
-import Typing  from 'src/chatbot/messages/typing/Typing'
+import Typing  from 'src/chatbot/messages/message/content/Typing'
 
 describe('ChatBot', () => {
   let node

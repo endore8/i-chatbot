@@ -5,25 +5,23 @@
   .ActionBar {
     bottom: 0.5em;
     left: 0;
+    list-style-type: none;
+    margin: 0;
+    overflow-x: scroll;
+    padding: 0.5em;
     position: absolute;
     right: 0;
     text-align: center;
-    overflow: hidden;
+    white-space: nowrap;
 
-    .Items {
-      list-style-type: none;
-      overflow-x: scroll;
-      white-space: nowrap;
-
-      li {
-        display: inline-block;
-      }
+    li {
+      display: inline-block;
+      margin: 0 0.5em;
     }
 
     button {
       border: none;
       border-radius: 6px;
-      margin: 0 0.5em;
       outline: none;
       padding: 0.5em 1em;
     }
@@ -76,6 +74,36 @@
         border-radius: 6px;
         max-width: 60%;
         padding: 0.5em 1em;
+
+        .Typing {
+          background-color: lightgray;
+          border-radius: 6px;
+          display: table;
+          padding: 0.5em;
+          width: auto;
+        }
+
+        .Typing span {
+          background-color: darkgray;
+          border-radius: 50%;
+          float: left;
+          height: 0.5em;
+          margin: 0 0.2em;
+          opacity: 0.4;
+          width: 0.5em;
+        }
+
+        .Typing span:nth-of-type(1) {
+          animation: 1s blink infinite 0.3333s;
+        }
+
+        .Typing span:nth-of-type(2) {
+          animation: 1s blink infinite 0.6666s;
+        }
+
+        .Typing span:nth-of-type(3) {
+          animation: 1s blink infinite 0.9999s;
+        }
       }
     }
 
@@ -98,85 +126,6 @@
         background-color: lightgray;
         color: black;
         text-align: left;
-      }
-    }
-
-    .Typing {
-      background-color: lightgray;
-      border-radius: 6px;
-      display: table;
-      padding: 1em;
-      width: auto;
-
-      animation-name: appearance;
-      animation-duration: 0.2s;
-      animation-timing-function: ease-out;
-    }
-
-    .Typing span {
-      background-color: darkgray;
-      border-radius: 50%;
-      float: left;
-      height: 0.5em;
-      margin: 0 0.2em;
-      opacity: 0.4;
-      width: 0.5em;
-    }
-
-    .Typing span:nth-of-type(1) {
-      animation: 1s blink infinite 0.3333s;
-    }
-
-    .Typing span:nth-of-type(2) {
-      animation: 1s blink infinite 0.6666s;
-    }
-
-    .Typing span:nth-of-type(3) {
-      animation: 1s blink infinite 0.9999s;
-    }
-  }
-}
-
-.I-ChatBot.Animated {
-  .ActionBar {
-    background-color: darkgrey;
-    height: 5em;
-
-    ul {
-      height: 100%;
-      padding: 1em;
-    }
-
-    li {
-      animation-name: bounceInUp;
-      animation-duration: 1s;
-    }
-
-    li:nth-of-type(0) {
-      animation-delay: 0s;
-    }
-
-    li:nth-of-type(1) {
-      animation-delay: 0.2s;
-    }
-
-    li:nth-of-type(2) {
-      animation-delay: 0.4s;
-    }
-  }
-
-  .Messages {
-    .Message-Inbound {
-      .Message-Content {
-        animation-name: zoomInRight;
-        animation-duration: 1s;
-      }
-    }
-
-    .Message-Outbound {
-      .Message-Content {
-        animation-name: zoomInLeft;
-        animation-duration: 1s;
       }
     }
   }
@@ -216,8 +165,22 @@
   }
 }
 
-.bounceInUp {
-  animation-name: bounceInUp;
+.slideInUp-enter {
+  transform: translate3d(0, 500%, 0);
+}
+
+.slideInUp-enter.slideInUp-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition: all 500ms ease-out;
+}
+
+.slideInUp-leave {
+  opacity: 1;
+}
+
+.slideInUp-leave.slideInUp-leave-active {
+  opacity: 0;
+  transition: all 300ms ease-out;
 }
 
 @keyframes slideInLeft {

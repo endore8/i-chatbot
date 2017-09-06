@@ -5,13 +5,14 @@ import { ChatBotUtil } from 'src/'
 describe('ChatBotUtil', () => {
   it('Creates a text message', () => {
     const callback = () => {}
-    expect(ChatBotUtil.textMessage('Hello')).toEqual({message: {text: 'Hello'}, actions: []})
-    expect(ChatBotUtil.textMessage()).toEqual({message: {text: undefined}, actions: []})
+    expect(ChatBotUtil.textMessage('Hello')).toEqual({content: {text: 'Hello'}, type: 'text', actions: []})
+    expect(ChatBotUtil.textMessage()).toEqual({content: {text: undefined}, type: 'text', actions: []})
     expect(ChatBotUtil.textMessage('Hi', ChatBotUtil.makeReplyButton('Hello')))
-      .toEqual({message: {text: 'Hi'}, actions: [{title: 'Hello', callback: undefined, type: 'quick-reply'}]})
+      .toEqual({content: {text: 'Hi'}, type: 'text', actions: [{title: 'Hello', callback: undefined, type: 'quick-reply'}]})
     expect(ChatBotUtil.textMessage('Question?', ChatBotUtil.makeReplyButton('Yes'), ChatBotUtil.makeReplyButton('No', callback)))
       .toEqual({
-        message: {text: 'Question?'},
+        content: {text: 'Question?'},
+        type: 'text',
         actions: [
           {title: 'Yes', callback: undefined, type: 'quick-reply'},
           {title: 'No', callback: callback, type: 'quick-reply'}]

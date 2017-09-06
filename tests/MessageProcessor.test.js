@@ -4,7 +4,7 @@ import MessageProcessor from 'src/chatbot/MessageProcessor'
 
 describe('MessageProcessor', () => {
   it('Processes a message with a delay', (done) => {
-    const msgVal = {message: {text: 'Hi!'}}
+    const msgVal = {content: {text: 'Hi!'}}
     const now = new Date().getTime()
 
     const processor = new MessageProcessor((msg) => {
@@ -23,17 +23,15 @@ describe('MessageProcessor', () => {
       called += 1
     }, false)
 
-    expect(processor.process({message: {text: 'Hi! It\'s a correct message.'}})).toEqual(true)
+    expect(processor.process({content: {text: 'Hi! It\'s a correct message.'}})).toEqual(true)
     expect(processor.process({text: 'Hi! This is a test message.'})).toEqual(false)
     expect(processor.process('Hi! This is a test message.')).toEqual(false)
     expect(processor.process(1234)).toEqual(false)
-    expect(processor.process({message: {text: 'Hi again!'}})).toEqual(true)
+    expect(processor.process({content: {text: 'Hi again!'}})).toEqual(true)
     expect(called).toEqual(2)
   })
 
   it('Typing speed is normalized', () => {
-    const processor = new MessageProcessor(() => {})
-
     expect(MessageProcessor.typingSpeed('Hi')).toEqual(MessageProcessor.minTypingSpeed)
     expect(MessageProcessor.typingSpeed('Hello there!')).toEqual(480)
     expect(MessageProcessor.typingSpeed('Hi! A test case for typing speed!'))
@@ -44,8 +42,6 @@ describe('MessageProcessor', () => {
   })
 
   it('Typing speed is zero for no text', () => {
-    const processor = new MessageProcessor(() => {})
-
     expect(MessageProcessor.typingSpeed()).toEqual(0)
   })
 
@@ -54,7 +50,7 @@ describe('MessageProcessor', () => {
 
     expect(MessageProcessor.typingSpeed()).toEqual(0)
     expect(processor.isProcessing).toEqual(false)
-    processor.process({message: {text: 'Hi! This is a test message.'}})
+    processor.process({content: {text: 'Hi! This is a test message.'}})
     expect(processor.isProcessing).toEqual(false)
   })
 
@@ -63,7 +59,7 @@ describe('MessageProcessor', () => {
       throw new Error('Should not be called')
     })
 
-    const object = {message: {text: 'Hi! This is a test message.'}}
+    const object = {content: {text: 'Hi! This is a test message.'}}
     processor.process(object)
     expect(processor.isProcessing).toEqual(true)
     processor.reset()
@@ -71,6 +67,6 @@ describe('MessageProcessor', () => {
 
     setTimeout(() => {
       done()
-    }, MessageProcessor.typingSpeed(object.message.text))
+    }, MessageProcessor.typingSpeed(object.content.text))
   })
 })

@@ -1,7 +1,8 @@
 class ChatBotUtil {
   static textMessage (text, ...actions) {
     return {
-      message: {
+      type: 'text',
+      content: {
         text: text
       },
       actions: actions

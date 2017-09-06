@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 class Typing extends Component {
   render () {
     return (
-      <li className="Typing">
+      <div className="Typing">
         <span />
         <span />
         <span />
-      </li>
+      </div>
     )
   }
 }

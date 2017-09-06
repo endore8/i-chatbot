@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Scroll from 'react-scroll'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import Message from './message/Message'
-import Typing from './typing/Typing'
 
 const Element = Scroll.Element
 const Scroller = Scroll.scroller
@@ -21,23 +21,25 @@ class Messages extends Component {
 
   render () {
     return (
-      <ul className="Messages" id="Messages">
+      <CSSTransitionGroup component="ul"
+                          className="Messages"
+                          id="Messages"
+                          transitionName=""
+                          transitionEnterTimeout={500}
+                          transitionLeaveTimeout={300}>
         {this.props.messages.map((message, i) => <Message {...message} key={i} />)}
-        {this.props.isTyping && <Typing />}
         <Element name="LastMessage" />
-      </ul>
+      </CSSTransitionGroup>
     )
   }
 }
 
 Messages.defaultProps = {
-  messages: [],
-  isTyping: false
+  messages: []
 }
 
 Messages.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isTyping: PropTypes.bool
+  messages: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default Messages

@@ -24,11 +24,11 @@ class ChatBot extends Component {
   }
 
   render () {
+    const messages = this.state.messages.concat(this._messageProcessor.isProcessing ? [{type: 'typing'}] : [])
+
     return (
       <div className={'I-ChatBot' + (this.props.isAnimated ? ' Animated' : '')}>
-        <Messages
-          messages={this.state.messages}
-          isTyping={this.props.isAnimated && this._messageProcessor.isProcessing} />
+        <Messages messages={messages} />
         <ActionBar
           actions={this.state.actions.map((action) => {
             switch (action.type) {
@@ -58,29 +58,36 @@ class ChatBot extends Component {
     }
   }
 
-  _addMessage (message, isInbound, actions) {
+  _addMessage (content, type, isInbound, actions) {
     this.setState((prevState, props) => ({
       actions: actions || [],
-      messages: message ? prevState.messages.concat(Object.assign({}, message, {isInbound: isInbound})) : prevState.messages
+      messages: (content && type) ? prevState.messages.concat(Object.assign({}, {
+        content: content,
+        type: type
+      }, {isInbound: isInbound})) : prevState.messages
     }))
   }
 
+  _addTextMessage (text, isInbound, actions) {
+    this._addMessage({text: text}, 'text', isInbound, actions)
+  }
+
   _onGetStarted (text) {
-    this._addMessage({text: text}, true, null)
+    this._addTextMessage(text, true, null)
     this._processNext(this.props.onGetStarted())
   }
 
   _onProcessed (message) {
-    this._addMessage(message.message, false, this._messageProcessor.isProcessing ? null : message.actions)
+    this._addMessage(message.content, message.type, false, this._messageProcessor.isProcessing ? null : message.actions)
   }
 
   _onQuickReplyAction (text, callback) {
-    this._addMessage({text: text}, true, null)
+    this._addTextMessage(text, true, null)
     if (callback) this._processNext(callback())
   }
 
   _onTextInputSubmit (value, callback) {
-    this._addMessage(value.length ? {text: value} : null, true, null)
+    this._addTextMessage(value.length ? value : null, true, null)
     this._processNext(callback(value))
   }
 
