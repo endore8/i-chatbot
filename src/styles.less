@@ -16,7 +16,7 @@
       white-space: nowrap;
 
       li {
-        display: inline;
+        display: inline-block;
       }
     }
 
@@ -138,6 +138,33 @@
 }
 
 .I-ChatBot.Animated {
+  .ActionBar {
+    background-color: darkgrey;
+    height: 5em;
+
+    ul {
+      height: 100%;
+      padding: 1em;
+    }
+
+    li {
+      animation-name: bounceInUp;
+      animation-duration: 1s;
+    }
+
+    li:nth-of-type(0) {
+      animation-delay: 0s;
+    }
+
+    li:nth-of-type(1) {
+      animation-delay: 0.2s;
+    }
+
+    li:nth-of-type(2) {
+      animation-delay: 0.4s;
+    }
+  }
+
   .Messages {
     .Message-Inbound {
       .Message-Content {
@@ -173,7 +200,7 @@
 
   60% {
     opacity: 1;
-    transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -10px, 0);
   }
 
   75% {
