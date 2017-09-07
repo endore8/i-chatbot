@@ -24,7 +24,7 @@ class Messages extends Component {
       <CSSTransitionGroup component="ul"
                           className="Messages"
                           id="Messages"
-                          transitionName=""
+                          transitionName="slideInUp"
                           transitionEnterTimeout={500}
                           transitionLeaveTimeout={300}>
         {this.props.messages.map((message, i) => <Message {...message} key={i} />)}

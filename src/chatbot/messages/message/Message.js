@@ -6,6 +6,7 @@ import Typing from './content/Typing'
 
 class Message extends Component {
   render () {
+    let className = 'Message ' + (this.props.isInbound ? 'Inbound' : 'Outbound')
     let content = (() => {
       switch (this.props.type) {
         case 'text':
@@ -17,7 +18,7 @@ class Message extends Component {
     })()
 
     return (
-      <li className={this.props.isInbound ? 'Message Message-Inbound' : 'Message Message-Outbound'}>
+      <li className={className}>
         <div className="Message-Content">
           {content}
         </div>
