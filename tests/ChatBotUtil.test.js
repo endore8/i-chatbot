@@ -5,18 +5,36 @@ import { ChatBotUtil } from 'src/'
 describe('ChatBotUtil', () => {
   it('Creates a text message', () => {
     const callback = () => {}
-    expect(ChatBotUtil.textMessage('Hello')).toEqual({content: {text: 'Hello'}, type: 'text', actions: []})
-    expect(ChatBotUtil.textMessage()).toEqual({content: {text: undefined}, type: 'text', actions: []})
+    expect(ChatBotUtil.textMessage('Hello')).toEqual({
+      content: {text: 'Hello'},
+      isInbound: false,
+      type: 'text',
+      actions: []
+    })
+    expect(ChatBotUtil.textMessage()).toEqual({content: {text: undefined}, isInbound: false, type: 'text', actions: []})
     expect(ChatBotUtil.textMessage('Hi', ChatBotUtil.makeReplyButton('Hello')))
-      .toEqual({content: {text: 'Hi'}, type: 'text', actions: [{title: 'Hello', callback: undefined, type: 'quick-reply'}]})
+      .toEqual({
+        content: {text: 'Hi'},
+        isInbound: false,
+        type: 'text',
+        actions: [{title: 'Hello', callback: undefined, type: 'quick-reply'}]
+      })
     expect(ChatBotUtil.textMessage('Question?', ChatBotUtil.makeReplyButton('Yes'), ChatBotUtil.makeReplyButton('No', callback)))
       .toEqual({
         content: {text: 'Question?'},
+        isInbound: false,
         type: 'text',
         actions: [
           {title: 'Yes', callback: undefined, type: 'quick-reply'},
           {title: 'No', callback: callback, type: 'quick-reply'}]
       })
+  })
+
+  it('Creates a user text message', () => {
+    expect(ChatBotUtil.userTextMessage('Hello')).toEqual({content: {text: 'Hello'}, isInbound: true, type: 'text'})
+    expect(ChatBotUtil.userTextMessage()).toEqual({content: {text: undefined}, isInbound: true, type: 'text'})
+    expect(ChatBotUtil.userTextMessage('Hi', ChatBotUtil.makeReplyButton('Hello')))
+      .toEqual({content: {text: 'Hi'}, isInbound: true, type: 'text'})
   })
 
   it('Creates a get started button', () => {

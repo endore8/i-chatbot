@@ -2,10 +2,21 @@ class ChatBotUtil {
   static textMessage (text, ...actions) {
     return {
       type: 'text',
+      isInbound: false,
       content: {
         text: text
       },
       actions: actions
+    }
+  }
+
+  static userTextMessage (text) {
+    return {
+      type: 'text',
+      isInbound: true,
+      content: {
+        text: text
+      }
     }
   }
 

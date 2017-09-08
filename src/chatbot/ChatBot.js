@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import MessageProcessor from './MessageProcessor'
+import ChatBotUtil from './ChatBotUtil'
 
 import ActionBar from './actionbar/ActionBar'
 import Messages from './messages/Messages'
@@ -24,7 +25,10 @@ class ChatBot extends Component {
   }
 
   render () {
-    const messages = this.state.messages.concat(this._messageProcessor.isProcessing ? [{type: 'typing', isInbound: false}] : [])
+    const messages = this.state.messages.concat(this._messageProcessor.isProcessing ? [{
+      type: 'typing',
+      isInbound: false
+    }] : [])
 
     return (
       <div className={'I-ChatBot'}>
@@ -46,11 +50,11 @@ class ChatBot extends Component {
     )
   }
 
-  startOver () {
+  startOver (message = null) {
     this._messageProcessor.reset()
     this.setState((prevState, props) => ({
       actions: props.getStartedButton ? [props.getStartedButton] : [],
-      messages: []
+      messages: message && !this.props.getStartedButton ? [message] : []
     }))
 
     if (!this.props.getStartedButton) {
@@ -58,36 +62,31 @@ class ChatBot extends Component {
     }
   }
 
-  _addMessage (content, type, isInbound, actions) {
+  _addMessage (message) {
     this.setState((prevState, props) => ({
-      actions: actions || [],
-      messages: (content && type) ? prevState.messages.concat(Object.assign({}, {
-        content: content,
-        type: type
-      }, {isInbound: isInbound})) : prevState.messages
+      actions: message.actions || [],
+      messages: prevState.messages.concat(message)
     }))
   }
 
-  _addTextMessage (text, isInbound, actions) {
-    this._addMessage({text: text}, 'text', isInbound, actions)
-  }
-
   _onGetStarted (text) {
-    this._addTextMessage(text, true, null)
+    this._addMessage(ChatBotUtil.userTextMessage(text))
     this._processNext(this.props.onGetStarted())
   }
 
   _onProcessed (message) {
-    this._addMessage(message.content, message.type, false, this._messageProcessor.isProcessing ? null : message.actions)
+    this._addMessage(message)
   }
 
   _onQuickReplyAction (text, callback) {
-    this._addTextMessage(text, true, null)
-    if (callback) this._processNext(callback())
+    this._addMessage(ChatBotUtil.userTextMessage(text))
+    if (callback)
+      this._processNext(callback())
   }
 
   _onTextInputSubmit (value, callback) {
-    this._addTextMessage(value.length ? value : null, true, null)
+    if (value && value.length)
+      this._addMessage(ChatBotUtil.userTextMessage(value))
     this._processNext(callback(value))
   }
 
