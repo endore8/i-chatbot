@@ -76,6 +76,7 @@
         border-radius: 6px;
         max-width: 60%;
         padding: 0.5em 1em;
+        position: relative;
 
         div.Typing {
           background-color: lightgray;
@@ -177,6 +178,26 @@
   }
 
   .Messages-leave.Messages-leave-active {
+    opacity: 0;
+    transition: all 300ms ease-out;
+  }
+
+  // - Message-Content
+  .Message-Content-enter {
+  }
+
+  .Message-Content-enter.Message-Content-enter-active {
+    transition: all 500ms ease-out;
+  }
+
+  .Message-Content-leave {
+    position: absolute;
+    left: 0.5em;
+    top: 0.5em;
+    opacity: 1;
+  }
+
+  .Message-Content-leave.Message-Content-leave-active {
     opacity: 0;
     transition: all 300ms ease-out;
   }

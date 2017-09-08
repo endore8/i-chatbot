@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import Text from './content/Text'
 import Typing from './content/Typing'
@@ -10,18 +11,22 @@ class Message extends Component {
     let content = (() => {
       switch (this.props.type) {
         case 'text':
-          return <Text {...this.props.content} />
+          return <Text key="text" {...this.props.content} />
 
         case 'typing':
-          return <Typing />
+          return <Typing key="typing" />
       }
     })()
 
     return (
       <li className={className}>
-        <div className="Message-Content">
+        <CSSTransitionGroup component="div"
+                            className="Message-Content"
+                            transitionName="Message-Content"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}>
           {content}
-        </div>
+        </CSSTransitionGroup>
       </li>
     )
   }
