@@ -20,14 +20,14 @@ class ChatBot extends Component {
     this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
     this._onProcessed = this._onProcessed.bind(this)
 
-    this._messageProcessor = new MessageProcessor(this._onProcessed, props.isAnimated)
+    this._messageProcessor = new MessageProcessor(this._onProcessed)
   }
 
   render () {
-    const messages = this.state.messages.concat(this._messageProcessor.isProcessing ? [{type: 'typing'}] : [])
+    const messages = this.state.messages.concat(this._messageProcessor.isProcessing ? [{type: 'typing', isInbound: false}] : [])
 
     return (
-      <div className={'I-ChatBot' + (this.props.isAnimated ? ' Animated' : '')}>
+      <div className={'I-ChatBot'}>
         <Messages messages={messages} />
         <ActionBar
           actions={this.state.actions.map((action) => {
@@ -94,18 +94,16 @@ class ChatBot extends Component {
   _processNext (next) {
     if (!next) return
 
-    ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
+    setTimeout(() => {
+      ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
+      this.forceUpdate()
+    }, 500)
   }
-}
-
-ChatBot.defaultProps = {
-  isAnimated: true
 }
 
 ChatBot.propTypes = {
   onGetStarted: PropTypes.func.isRequired,
-  getStartedButton: PropTypes.object,
-  isAnimated: PropTypes.bool
+  getStartedButton: PropTypes.object
 }
 
 export default ChatBot

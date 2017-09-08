@@ -73,7 +73,6 @@ Render ChatBot with a get started callback method and a start button.
 | ------------------ |:-------------:| :-----:| -----------|
 | onGetStarted       | -             | func   | Inital callback method to return first messages |
 | getStartedButton   | -             | object | Start button parameters |
-| isTypingEnabled    | true          | bool   | Typing delay |
 
 ### *Methods*
 

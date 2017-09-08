@@ -1,7 +1,6 @@
 class MessageProcessor {
-  constructor (onProcessed, isTypingEnabled = true) {
+  constructor (onProcessed) {
     this.onProcessed = onProcessed
-    this.isTypingEnabled = isTypingEnabled
 
     this._timeoutId = null
     this._queue = []
@@ -34,7 +33,6 @@ class MessageProcessor {
 
   _processNext () {
     if (this.isProcessing || !this._queue.length) return
-    if (!this.isTypingEnabled) return this._processed()
 
     this._timeoutId = setTimeout(this._processed, MessageProcessor.typingSpeed(this._queue[0].content.text))
   }
@@ -49,11 +47,11 @@ class MessageProcessor {
   }
 
   static get minTypingSpeed () {
-    return 400
+    return 1000
   }
 
   static get maxTypingSpeed () {
-    return 2000
+    return 3000
   }
 
   static typingSpeed (text) {

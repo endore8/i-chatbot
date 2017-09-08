@@ -4,7 +4,7 @@ import { render, unmountComponentAtNode } from 'react-dom'
 
 import Typing  from 'src/chatbot/messages/message/content/Typing'
 
-describe('ChatBot', () => {
+describe('Typing', () => {
   let node
 
   beforeEach(() => {
