@@ -11,7 +11,7 @@ class ActionBar extends Component {
     return (
       <CSSTransitionGroup component="ul"
                           className="ActionBar"
-                          transitionName="slideInUp"
+                          transitionName="ActionBar"
                           transitionEnterTimeout={500}
                           transitionLeaveTimeout={300}>
         {this.props.actions && this.props.actions.map((action, i) => {
@@ -28,7 +28,7 @@ class ActionBar extends Component {
             }
           })()
 
-          return <li key={i}>{li}</li>
+          return <li className="Action" key={i}>{li}</li>
         })}
       </CSSTransitionGroup>
     )
