@@ -11,21 +11,23 @@ class Message extends Component {
     let content = (() => {
       switch (this.props.type) {
         case 'text':
-          return <Text key="text" {...this.props.content} />
+          return <Text {...this.props.content} />
 
         case 'typing':
-          return <Typing key="typing" />
+          return <Typing />
       }
     })()
 
     return (
       <li className={className}>
         <CSSTransitionGroup component="div"
-                            className="Message-Content"
+                            className="Message-Animatable-Container"
                             transitionName="Message-Content"
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}>
-          {content}
+          <div key={this.props.type} className="Message-Content">
+            {content}
+          </div>
         </CSSTransitionGroup>
       </li>
     )
