@@ -85,6 +85,10 @@ class ChatBot extends Component {
   }
 
   _onTextInputSubmit (value, callback) {
+    this.setState((prevState, props) => ({
+      actions: []
+    }))
+
     if (value && value.length)
       this._addMessage(ChatBotUtil.userTextMessage(value))
     this._processNext(callback(value))
