@@ -89,18 +89,19 @@ class ChatBot extends Component {
       actions: []
     }))
 
-    if (value && value.length)
+    const hasValue = value && value.length
+    if (hasValue)
       this._addMessage(ChatBotUtil.userTextMessage(value))
-    this._processNext(callback(value))
+    this._processNext(callback(value), hasValue)
   }
 
-  _processNext (next) {
+  _processNext (next, delay = true) {
     if (!next) return
 
     setTimeout(() => {
       ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
       this.forceUpdate()
-    }, 500)
+    }, delay ? 500 : 0)
   }
 }
 
