@@ -145,6 +145,7 @@ As CSS pre-processor is used [LESS](http://lesscss.org). Copy and modify styles 
 ## Built with `i-chatbot` 🤘
 
 - Personal [website](http://olehst.com) of Oleh Stasula
+- Landing [page](http://meetjustin.online/) of Justin Case
 
 Have you built something cool with `i-chatbot`? Submit a pull-request and add it to this list! 😉
 
