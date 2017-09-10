@@ -5,23 +5,20 @@
 <p align="center">
 Simple and elegant component for building conversational interfaces on React. 🤖💯✨
 </p>
-
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
-[![License: MIT][mit-badge]][mit]
-
-[build-badge]: https://img.shields.io/travis/Endore8/i-chatbot.svg?branch=master
-[build]: https://travis-ci.org/Endore8/i-chatbot
-
-[npm-badge]: https://badge.fury.io/js/i-chatbot.svg
-[npm]: https://www.npmjs.org/package/i-chatbot
-
-[coveralls-badge]: https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg
-[coveralls]: https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg
-
-[mit-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
-[mit]: https://opensource.org/licenses/MIT
+<p align="center">
+    <a href="https://travis-ci.org/Endore8/i-chatbot">
+        <img src="https://img.shields.io/travis/Endore8/i-chatbot.svg?branch=master" alt="build" /> 
+    </a>
+    <a href="https://www.npmjs.org/package/i-chatbot">
+        <img src="https://badge.fury.io/js/i-chatbot.svg" alt="npm" /> 
+    </a>
+    <a href="https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg">
+        <img src="https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg" alt="coverage" /> 
+    </a>
+    <a href="https://opensource.org/licenses/MIT">
+        <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license" /> 
+    </a>
+</p>
 
 ## Getting Started 🚀
 
@@ -148,6 +145,12 @@ As CSS pre-processor is used [LESS](http://lesscss.org). Copy and modify styles 
 - Landing [page](http://meetjustin.online/) of Justin Case
 
 Have you built something cool with `i-chatbot`? Submit a pull-request and add it to this list! 😉
+
+## To-do 🛠
+
+- Bottom-up chat direction
+- Better input validation
+- Avatar placeholder
 
 ## Contribution 💪
 
