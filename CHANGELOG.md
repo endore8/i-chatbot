@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.2.10
+
+- Separated styles
+- Better animations and async events order
+- Always animated chat
+
 ## v0.2.9
 
 - Newer APIs

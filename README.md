@@ -76,9 +76,9 @@ Render ChatBot with a get started callback method and a start button.
 
 ### *Methods*
 
-#### startOver ()
+#### startOver (message)
 
-Resets a state of chat.
+Resets a state of chat and adds a message object if no get started button set.
 
 ### ChatBotUtil
 
@@ -94,6 +94,16 @@ Parameters:
 | ------- |:---------:| ------------|
 | text    | string    | Message text |
 | actions | object(s) | Quick reply button(s) object |
+
+#### userTextMessage (text)
+
+Create a user's text message object.
+
+Parameters:
+
+| Name    | Type      | Description |
+| ------- |:---------:| ------------|
+| text    | string    | Message text |
 
 #### makeReplyButton (title)
 
@@ -127,6 +137,10 @@ Parameters:
 | send        | string | Title of the submit button |
 | placeholder | string | Placeholder for input field |
 | postback    | string | Postback value |
+
+### Style
+
+As CSS pre-processor is used [LESS](http://lesscss.org). Copy and modify styles from `demo/src/i-chatbot.less` and then import in your app.
 
 ## Built with `i-chatbot` 🤘
 
