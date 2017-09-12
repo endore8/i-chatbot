@@ -6,7 +6,7 @@ class Button extends Component {
     super(props)
 
     this._handleClick = this._handleClick.bind(this)
-    this.buttonClassName = ""
+    this.buttonClassName = ''
   }
 
   render () {

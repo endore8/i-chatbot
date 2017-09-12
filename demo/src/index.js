@@ -15,13 +15,13 @@ class Demo extends Component {
 
   render () {
     return (
-      <div className="Demo Container">
-        <div className="Content">
+      <div className='Demo Container'>
+        <div className='Content'>
           <h1>i-chatbot demo</h1>
           <ChatBot ref={(cb) => {this.chatbot = cb}}
                    onGetStarted={Logic.getStarted}
                    getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
-          <div className="Extra-Actions">
+          <div className='Extra-Actions'>
             <button onClick={this._onStartOver}>Start Over</button>
           </div>
         </div>

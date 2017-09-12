@@ -20,12 +20,12 @@ class Message extends Component {
 
     return (
       <li className={className}>
-        <CSSTransitionGroup component="div"
-                            className="Message-Animatable-Container"
-                            transitionName="Message-Content"
+        <CSSTransitionGroup component='div'
+                            className='Message-Animatable-Container'
+                            transitionName='Message-Content'
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}>
-          <div key={this.props.type} className="Message-Content">
+          <div key={this.props.type} className='Message-Content'>
             {content}
           </div>
         </CSSTransitionGroup>

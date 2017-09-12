@@ -4,7 +4,7 @@ class ReplyButton extends Button {
   constructor (props) {
     super(props)
 
-    this.buttonClassName = "ReplyButton"
+    this.buttonClassName = 'ReplyButton'
   }
 }
 

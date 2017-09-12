@@ -21,14 +21,14 @@ class Messages extends Component {
 
   render () {
     return (
-      <CSSTransitionGroup component="ul"
-                          className="Messages"
-                          id="Messages"
-                          transitionName="Messages"
+      <CSSTransitionGroup component='ul'
+                          className='Messages'
+                          id='Messages'
+                          transitionName='Messages'
                           transitionEnterTimeout={500}
                           transitionLeaveTimeout={300}>
         {this.props.messages.map((message, i) => <Message {...message} key={i} />)}
-        <Element name="LastMessage" />
+        <Element name='LastMessage' />
       </CSSTransitionGroup>
     )
   }

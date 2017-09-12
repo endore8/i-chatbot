@@ -16,13 +16,13 @@ class TextInput extends Component {
 
   render () {
     return (
-      <div className="TextInput">
-        <input className="Input"
+      <div className='TextInput'>
+        <input className='Input'
                placeholder={this.props.placeholder}
                onChange={this._updateInputValue}
                onSubmit={this._handleSubmit}
                onKeyPress={this._handleKeyPress} />
-        <button className="Submit" onClick={this._handleSubmit}>{this.props.submit}</button>
+        <button className='Submit' onClick={this._handleSubmit}>{this.props.submit}</button>
       </div>
     )
   }
