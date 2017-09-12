@@ -7,8 +7,8 @@ import Typing from './content/Typing'
 
 class Message extends Component {
   render () {
-    let className = 'Message ' + (this.props.isInbound ? 'Inbound' : 'Outbound')
-    let content = (() => {
+    const className = `Message ${this.props.isInbound ? 'Inbound' : 'Outbound'}`
+    const content = (() => {
       switch (this.props.type) {
         case 'text':
           return <Text {...this.props.content} />

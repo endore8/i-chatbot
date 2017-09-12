@@ -55,7 +55,7 @@ class MessageProcessor {
   }
 
   static typingSpeed (text) {
-    if (!text || !(text instanceof String || typeof text === 'string')) return 0
+    if (!text || Object.prototype.toString.call(text) !== "[object String]") return 0
 
     return Math.min(
       Math.max(

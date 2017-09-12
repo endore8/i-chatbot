@@ -11,21 +11,20 @@ class ChatBot extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      actions: props.getStartedButton ? [props.getStartedButton] : [],
-      messages: []
-    }
-
     this._onGetStarted = this._onGetStarted.bind(this)
     this._onQuickReplyAction = this._onQuickReplyAction.bind(this)
     this._onTextInputSubmit = this._onTextInputSubmit.bind(this)
     this._onProcessed = this._onProcessed.bind(this)
 
-    this._messageProcessor = new MessageProcessor(this._onProcessed)
+    this.state = {
+      actions: props.getStartedButton ? [props.getStartedButton] : [],
+      messages: [],
+      messageProcessor: new MessageProcessor(this._onProcessed)
+    }
   }
 
   render () {
-    const messages = this.state.messages.concat(this._messageProcessor.isProcessing ? [{
+    const messages = this.state.messages.concat(this.state.messageProcessor.isProcessing ? [{
       type: 'typing',
       isInbound: false
     }] : [])
@@ -51,7 +50,7 @@ class ChatBot extends Component {
   }
 
   startOver (message = null) {
-    this._messageProcessor.reset()
+    this.state.messageProcessor.reset()
     this.setState((prevState, props) => ({
       actions: props.getStartedButton ? [props.getStartedButton] : [],
       messages: message && !this.props.getStartedButton ? [message] : []
@@ -99,7 +98,7 @@ class ChatBot extends Component {
     if (!next) return
 
     setTimeout(() => {
-      ((next instanceof Array) ? next : [next]).map((message) => this._messageProcessor.process(message))
+      ((Array.isArray(next)) ? next : [next]).map((message) => this.state.messageProcessor.process(message))
       this.forceUpdate()
     }, delay ? 500 : 0)
   }
