@@ -7,6 +7,11 @@ import ChatBotUtil from './ChatBotUtil'
 import ActionBar from './actionbar/ActionBar'
 import Messages from './messages/Messages'
 
+/**
+ * A `ChatBot` component builds a chat based on messages received from callbacks, handles user interactions and calls user-defined callbacks with caught data.w
+ *
+ * <ChatBot onGetStarted={onGetStarted} getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')} />
+ */
 class ChatBot extends Component {
   constructor (props) {
     super(props)
@@ -105,7 +110,20 @@ class ChatBot extends Component {
 }
 
 ChatBot.propTypes = {
+  /**
+   * A `<ChatBot>` callback fired immediately on mounting if no get started button object passed during initialization, otherwise when the get started button is pressed.
+   * Returns an array of chat message objects to display in a chat.
+   *
+   * @type Function() -> [Object]
+   */
   onGetStarted: PropTypes.func.isRequired,
+
+  /**
+   * An optional object that describes get start button.
+   * Use ChatBotUtil.makeGetStartedButton method for creating an object with button title.
+   *
+   * @type Object
+   */
   getStartedButton: PropTypes.object
 }
 
