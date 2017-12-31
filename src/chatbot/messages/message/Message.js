@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CSSTransitionGroup } from 'react-transition-group'
+import { TransitionGroup } from 'react-transition-group'
 
+import Animatable from './../../Animatable'
 import Text from './content/Text'
 import Typing from './content/Typing'
 
@@ -19,17 +20,15 @@ class Message extends Component {
     })()
 
     return (
-      <li className={className}>
-        <CSSTransitionGroup component='div'
-                            className='Message-Animatable-Container'
-                            transitionName='Message-Content'
-                            transitionEnterTimeout={500}
-                            transitionLeaveTimeout={300}>
-          <div key={this.props.type} className='Message-Content'>
-            {content}
+      <TransitionGroup component='li' className={className}>
+        <Animatable classNames='Message-Content'>
+          <div className='Message-Animatable-Container'>
+            <div className='Message-Content'>
+              {content}
+            </div>
           </div>
-        </CSSTransitionGroup>
-      </li>
+        </Animatable>
+      </TransitionGroup>
     )
   }
 }

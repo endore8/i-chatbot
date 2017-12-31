@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Scroll from 'react-scroll'
-import { CSSTransitionGroup } from 'react-transition-group'
+import { TransitionGroup } from 'react-transition-group'
 
+import Animatable from './../Animatable'
 import Message from './message/Message'
 
 const Element = Scroll.Element
@@ -20,16 +21,13 @@ class Messages extends Component {
   }
 
   render () {
+    const messages = this.props.messages.map((message, i) => <Animatable classNames='Messages' key={i}><Message {...message} /></Animatable>)
+    const lastMessage = <Element name='LastMessage' />
     return (
-      <CSSTransitionGroup component='ul'
-                          className='Messages'
-                          id='Messages'
-                          transitionName='Messages'
-                          transitionEnterTimeout={500}
-                          transitionLeaveTimeout={300}>
-        {this.props.messages.map((message, i) => <Message {...message} key={i} />)}
-        <Element name='LastMessage' />
-      </CSSTransitionGroup>
+      <TransitionGroup component='ul' className='Messages' id='Messages'>
+        {messages}
+        {lastMessage}
+      </TransitionGroup>
     )
   }
 }
