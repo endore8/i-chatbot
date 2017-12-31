@@ -1,6 +1,6 @@
 import expect from 'expect'
 import React from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
+import ReactDOM, { render, unmountComponentAtNode } from 'react-dom'
 import ReactTestUtils from 'react-dom/test-utils'
 
 import ChatBot, { ChatBotUtil } from 'src/'
@@ -22,7 +22,7 @@ describe('ChatBot', () => {
 
     render(
       <ChatBot getStartedButton={ChatBotUtil.makeGetStartedButton('Start')}
-               onGetStarted={onGetStarted} />, node, () => {
+        onGetStarted={onGetStarted} />, node, () => {
         expect(node.children.length).toEqual(1)
         expect(node.firstChild.className).toEqual('I-ChatBot')
       }
@@ -38,7 +38,7 @@ describe('ChatBot', () => {
 
     render(
       <ChatBot onGetStarted={onGetStarted}
-               ref={(c) => { chat = c }} />, node, () => {
+        ref={(c) => { chat = c }} />, node, () => {
         chat.startOver()
         expect(isCalled).toEqual(true)
       }
@@ -54,8 +54,8 @@ describe('ChatBot', () => {
 
     render(
       <ChatBot getStartedButton={ChatBotUtil.makeGetStartedButton('Start')}
-               onGetStarted={onGetStarted}
-               ref={(c) => { chat = c }} />, node, () => {
+        onGetStarted={onGetStarted}
+        ref={(c) => { chat = c }} />, node, () => {
         chat.startOver()
         expect(isCalled).toEqual(false)
       }
@@ -83,7 +83,7 @@ describe('ChatBot', () => {
 
     const rendered = render(
       <ChatBot getStartedButton={ChatBotUtil.makeGetStartedButton('Start')}
-               onGetStarted={getStarted} />, node)
+        onGetStarted={getStarted} />, node)
 
     const firstStep = () => {
       const startButton = ReactTestUtils.findRenderedDOMComponentWithClass(rendered, 'GetStartedButton')
@@ -95,6 +95,7 @@ describe('ChatBot', () => {
 
     const secondStep = () => {
       const buttons = ReactTestUtils.scryRenderedDOMComponentsWithTag(rendered, 'button')
+      expect(buttons.length).toEqual(2)
       const firstButton = buttons[0]
       expect(firstButton).toExist()
       ReactTestUtils.Simulate.click(firstButton)
