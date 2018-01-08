@@ -28,6 +28,8 @@ Simple and elegant component for building conversational interfaces on React. ðŸ
 npm i i-chatbot --save
 ```
 
+> Please use the latest stable version released on [npm](https://www.npmjs.com/package/i-chatbot) (command described above does it for you). Current changes in `master` have broken scrolling. It should be fixed soon.
+
 ### Basic Usage
 
 Import component
