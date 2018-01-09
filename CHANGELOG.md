@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.11
+
+- Updated dependencies
+
 ## v0.2.10
 
 - Separated styles

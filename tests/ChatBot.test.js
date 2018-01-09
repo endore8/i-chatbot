@@ -6,6 +6,8 @@ import ReactTestUtils from 'react-dom/test-utils'
 import ChatBot, { ChatBotUtil } from 'src/'
 import MessageProcessor from 'src/chatbot/MessageProcessor'
 
+process.env.MESSAGE_SCROLL_DISABLED = true
+
 describe('ChatBot', () => {
   let node
 

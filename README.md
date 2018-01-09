@@ -7,16 +7,16 @@ Simple and elegant component for building conversational interfaces on React. ðŸ
 </p>
 <p align="center">
     <a href="https://travis-ci.org/Endore8/i-chatbot">
-        <img src="https://img.shields.io/travis/Endore8/i-chatbot.svg?branch=master" alt="build" /> 
+        <img src="https://img.shields.io/travis/Endore8/i-chatbot.svg?branch=master" alt="build" />
     </a>
     <a href="https://www.npmjs.org/package/i-chatbot">
-        <img src="https://badge.fury.io/js/i-chatbot.svg" alt="npm" /> 
+        <img src="https://badge.fury.io/js/i-chatbot.svg" alt="npm" />
     </a>
     <a href="https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg">
-        <img src="https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg" alt="coverage" /> 
+        <img src="https://codecov.io/gh/Endore8/i-chatbot/branch/master/graph/badge.svg" alt="coverage" />
     </a>
     <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license" /> 
+        <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license" />
     </a>
 </p>
 
@@ -28,17 +28,15 @@ Simple and elegant component for building conversational interfaces on React. ðŸ
 npm i i-chatbot --save
 ```
 
-> Please use the latest stable version released on [npm](https://www.npmjs.com/package/i-chatbot) (command described above does it for you). Current changes in `master` have broken scrolling. It should be fixed soon.
-
 ### Basic Usage
 
 Import component
 
 ```
-import ChatBot, { ChatBotUtil } from 'i-chatbot' 
+import ChatBot, { ChatBotUtil } from 'i-chatbot'
 ```
 
-Create methods that will handle postback events from a chatbot. 
+Create methods that will handle postback events from a chatbot.
 It should return an array of message objects to reply on user's action with a callback.
 
 ```
@@ -49,8 +47,8 @@ It should return an array of message objects to reply on user's action with a ca
         ChatBotUtil.makeReplyButton('Great!', this.intro))
     ]
   }
-  
-  intro () { 
+
+  intro () {
     return [
       ChatBotUtil.textMessage('That\'s good to hear!')
     ]
@@ -156,9 +154,9 @@ Have you built something cool with `i-chatbot`? Submit a pull-request and add it
 
 ## Contribution ðŸ’ª
 
-Your contribution is welcomed, no matter how big or small! 
+Your contribution is welcomed, no matter how big or small!
 
-Please have a look at the [contribution guide](CONTRIBUTING.md) for details about project structure, development environment, test suite, code style, etc. 
+Please have a look at the [contribution guide](CONTRIBUTING.md) for details about project structure, development environment, test suite, code style, etc.
 All the version updates are mentioned in the [changelog](CHANGELOG.md).
 
 ## License ðŸ”–

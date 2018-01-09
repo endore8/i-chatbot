@@ -23,3 +23,13 @@
 - `npm run build -- --copy-files` will build the component for publishing to npm and also bundle the demo app.
 
 - `npm run clean` will delete built resources.
+
+## Publishing
+
+- Update CHANGELOG.md with a new version and made changes
+
+- Update version in package.json
+
+- Commit changes and add a git version tag
+
+- Run `npm publish`
