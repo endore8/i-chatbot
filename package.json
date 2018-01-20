@@ -31,13 +31,13 @@
   ],
   "dependencies": {
     "prop-types": "^15.5.10",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-scroll": "^1.7.5",
     "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {
-    "react": "15.x"
+    "react": "16.x"
   },
   "devDependencies": {
     "eslint": "^4.14.0",
